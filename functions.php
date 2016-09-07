@@ -1,5 +1,5 @@
 <?php
-	
+
 define('GENESIS_LANGUAGES_DIR', STYLESHEETPATH.'/languages');
 define('GENESIS_LANGUAGES_URL', STYLESHEETPATH.'/languages');
 
@@ -12,7 +12,7 @@ remove_action( 'wp_head', 'genesis_load_favicon' );
 add_filter('xmlrpc_enabled', '__return_false');
 
 
-//* Edd Customisition 
+//* Edd Customisition
 require(CHILD_DIR.'/lib/edd_templates/functions.php');
 //remove_action( 'wp_enqueue_scripts', 'edd_register_styles' );
 //	remove_action( 'wp_enqueue_scripts', 'edd_load_scripts' );
@@ -107,7 +107,7 @@ add_filter( 'wpseo_breadcrumb_links', 'add_blog_link_to_breadcrumb' );
 
 
 
-//* Customize the post info function 
+//* Customize the post info function
 add_filter( 'genesis_post_info', 'post_info_filter' );
 function post_info_filter($post_info) {
 if (!is_page()) {
@@ -160,9 +160,9 @@ function disable_emojis() {
 	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 	remove_action( 'wp_print_styles', 'print_emoji_styles' );
-	remove_action( 'admin_print_styles', 'print_emoji_styles' );	
+	remove_action( 'admin_print_styles', 'print_emoji_styles' );
 	remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-	remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );	
+	remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
 	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
 	add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
 }
@@ -170,8 +170,8 @@ add_action( 'init', 'disable_emojis' );
 
 /**
  * Filter function used to remove the tinymce emoji plugin.
- * 
- * @param    array  $plugins  
+ *
+ * @param    array  $plugins
  * @return   array             Difference betwen the two arrays
  */
 function disable_emojis_tinymce( $plugins ) {
@@ -183,13 +183,14 @@ function disable_emojis_tinymce( $plugins ) {
 }
 
 //* Add Extra Code to Primary Menu
-function be_menu_extras($menu, $args) {
+function reussitepersonnelle_menu_extras($menu, $args) {
+	
 	$extras = '<li class="menu-item changez-votre-vie"><a onclick="javascript:__gaTracker(\'send\', \'event\', \'top-nav\', \'changer-de-vie\');" href="https://www.reussitepersonnelle.com/changer-de-vie/">Changez votre vie</a></li>';
 	$extras .= '<li class="search"><a id="main-nav-search-link" class="icon-search"></a><div class="search-div">' . get_search_form( false ) . '</div></li>';
-	
+
 	return $menu . $extras;
 }
-add_filter('wp_nav_menu_pages_items','be_menu_extras', 9, 2);
+add_filter('wp_nav_menu_items','reussitepersonnelle_menu_extras', 9, 2);
 
 
 
@@ -211,8 +212,8 @@ function reussitepersonnelle_enqueue_global_script() {
 add_action( 'genesis_after', 'mobile_first_sticky_message' );
 function mobile_first_sticky_message() {
 	if(is_single()){
-		
-	
+
+
 		?>
 	        <div class="sticky-message">
 	            <p>Attirez la prosp&eacute;rit&eacute; et le succ&egrave;s dans votre vie.</p>
@@ -224,7 +225,7 @@ function mobile_first_sticky_message() {
 
 //Add Footer Newsletter Call to action
 add_action('genesis_before_footer', 'reussitepersonnelle_newsletter_footer');
-function reussitepersonnelle_newsletter_footer(){ 
+function reussitepersonnelle_newsletter_footer(){
 	if(is_single() && get_comments_number() > 1){
 		?>
 		<div class="newsletter-footer">
@@ -269,7 +270,7 @@ function reussitepersonnelle_custom_footer() { ?>
 function GA_custom_author($gaq_push){
 	$author_id = $this_post->post_author;
 	$name = get_the_author_meta('display_name', $author_id);
-	
+
 	$gaq_push = "'set', 'dimension1', $name";
 	return $gaq_push;
 }
