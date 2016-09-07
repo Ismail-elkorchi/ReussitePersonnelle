@@ -28,13 +28,6 @@ add_theme_support( 'html5' );
 //* Add Viewport meta tag for mobile browsers (requires HTML5 theme support)
 add_theme_support( 'genesis-responsive-viewport' );
 
-//* Enqueue scripts and styles
-add_action( 'wp_enqueue_scripts', 'reussitepersonnelle_enqueue_scripts_styles' );
-function reussitepersonnelle_enqueue_scripts_styles() {
-	// Enqueue dashicons style
-	wp_enqueue_style( 'dashicons' );
-}
-
 // Remove the date and time on comments in Genesis child themes
 add_filter( 'genesis_show_comment_date', '__return_false' );
 
@@ -184,7 +177,7 @@ function disable_emojis_tinymce( $plugins ) {
 
 //* Add Extra Code to Primary Menu
 function reussitepersonnelle_menu_extras($menu, $args) {
-	
+
 	$extras = '<li class="menu-item changez-votre-vie"><a onclick="javascript:__gaTracker(\'send\', \'event\', \'top-nav\', \'changer-de-vie\');" href="https://www.reussitepersonnelle.com/changer-de-vie/">Changez votre vie</a></li>';
 	$extras .= '<li class="search"><a id="main-nav-search-link" class="icon-search"></a><div class="search-div">' . get_search_form( false ) . '</div></li>';
 

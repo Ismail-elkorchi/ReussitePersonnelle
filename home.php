@@ -22,26 +22,26 @@ function reussitepersonnelle_homepage()
 		<div class="home-features">
 			<div class="wrap">
 					<div class="one-third first">
-						<div class="dashicons dashicons-welcome-write-blog"></div>
+						<div class="icon-blog"></div>
 						<h4>Blog</h4>
 						<p class="margin-bottom">Nos articles gratuits, accessible depuis le blog, vous aidons &agrave; assurer votre &eacute;panouissement personnel au quotidien.</p>
 						<p><a class="button" href="https://www.reussitepersonnelle.com/blog/">Lire le blog</a></p>
 					</div>
 					<div class="one-third">
-						<div class="dashicons dashicons-rss"></div>
+						<div class="icon-rss"></div>
 						<h4>Newsletter</h4>
 						<p class="margin-bottom">Recevez nos conseils exclusifs dir&eacute;ctement sur votre boite email. Votre vie ne sera plus jamais la m&ecirc;me.</p>
 						<p><a class="button" href="https://www.reussitepersonnelle.com/newsletter/">Inscrivez-vous</a></p>
 					</div>
 					<div class="one-third last">
-						<div class="dashicons dashicons-desktop"></div>
+						<div class="icon-desktop"></div>
 						<h4>&Agrave; propos</h4>
 						<p class="margin-bottom">Notre site vous donne les outils pour vous aider &agrave; d&eacute;velopper une existence sereine et heureuse.</p>
 						<p><a class="button" href="https://www.reussitepersonnelle.com/a-propos/">En savoir plus</a></p>
 					</div>
 			</div>
 		</div>
-	<?php	
+	<?php
 }
 
 remove_action( 'genesis_loop', 'genesis_do_loop' );
