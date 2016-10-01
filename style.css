@@ -1174,27 +1174,6 @@ Content Area
 	text-transform: uppercase;
 }
 
-.icon-blog {
-	background: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2236%22%20height%3D%2236%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%23333%22%3E%3Cpath%20d%3D%22M16.89%201.2l1.41%201.41c.39.39.39%201.02%200%201.41L14%208.33V18H3V3h10.67l1.8-1.8c.4-.39%201.03-.4%201.42%200zm-5.66%208.48l5.37-5.36-1.42-1.42-5.36%205.37-.71%202.12z%22%2F%3E%3C%2Fsvg%3E') no-repeat;
-	width: 36px;
-	height: 36px;
-	margin: 0 auto 20px;
-}
-
-.icon-rss {
-	background: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2236%22%20height%3D%2236%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%23333%22%3E%3Cpath%20d%3D%22M14.92%2018H18C18%209.32%2010.82%202.25%202%202.25v3.02c7.12%200%2012.92%205.71%2012.92%2012.73zm-5.44%200h3.08C12.56%2012.27%207.82%207.6%202%207.6v3.02c2%200%203.87.77%205.29%202.16C8.7%2014.17%209.48%2016.03%209.48%2018zm-5.35-.02c1.17%200%202.13-.93%202.13-2.09%200-1.15-.96-2.09-2.13-2.09-1.18%200-2.13.94-2.13%202.09%200%201.16.95%202.09%202.13%202.09z%22%2F%3E%3C%2Fsvg%3E') no-repeat;
-	width: 36px;
-	height: 36px;
-	margin: 0 auto 20px;
-}
-
-.icon-desktop {
-	background: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2236%22%20height%3D%2236%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%23333%22%3E%3Cpath%20d%3D%22M3%202h14c.55%200%201%20.45%201%201v10c0%20.55-.45%201-1%201h-5v2h2c.55%200%201%20.45%201%201v1H5v-1c0-.55.45-1%201-1h2v-2H3c-.55%200-1-.45-1-1V3c0-.55.45-1%201-1zm13%209V4H4v7h12zM5%205h9L5%209V5z%22%2F%3E%3C%2Fsvg%3E') no-repeat;
-	width: 36px;
-	height: 36px;
-	margin: 0 auto 20px;
-}
-
 .home-features .one-third {
 	margin: 0;
 	padding-left: 20px;
