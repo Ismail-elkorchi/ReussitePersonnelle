@@ -1597,35 +1597,23 @@ li.comment {
 
 /* Social Buttons
 --------------------------------------------- */
-.sharrre {
-	display: inline-block;
-	font-family: Helvetica, Arial, sans-serif;
-	font-style: normal;
-	font-weight: normal;
-	margin-right: 5px;
-	overflow: hidden;
-	position: relative;
-	-webkit-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
-	-ms-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
-}
-
-.share-before {
+.social-sharing {
 	margin-top: 25px;
 }
 
-/* Buttons */
-.sharrre .share,
-.sharrre .count {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	border: none;
+.social-sharing .share-button {
 	display: inline-block;
-	padding: 0;
-	text-decoration: none !important;
+	overflow: hidden;
+	margin-right: 5px;
+	height: 20px;
+	width: 90px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.social-sharing .share-button,
+.social-sharing .share-button svg,
+.social-sharing .share-button a {
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
@@ -1633,240 +1621,64 @@ li.comment {
 	transition: all 0.3s ease-in-out;
 }
 
-.sharrre .share {
-	color: #fff;
+.social-sharing .share-button svg {
+	margin: 3px 6px;
 	float: left;
+}
+
+.social-sharing .share-button a {
 	font-family: Helvetica, Arial, sans-serif;
+	text-decoration: none !important;
+	font-size: 12px;
+	line-height: 20px;
+	float: right;
 	font-style: normal;
 	font-weight: normal;
-	text-decoration: none;
+	margin-right: 12px;
 }
 
-.sharrre:hover .share {
-	border: none;
-	color: #fff;
-	text-decoration: none;
-}
-
-.sharrre .count {
-	background-color: #fff;
-	font-family: Helvetica, Arial, sans-serif;
-	font-style: normal;
-	font-weight: bold;
-	position: relative;
-	text-align: center;
-}
-
-
-/* Small */
-.share-small .share,
-.share-small .count {
-	font-size: 12px;
-	height: 20px;
-	line-height: 20px;
-}
-
-.share-small .share {
-	border-top-left-radius: 3px;
-	border-bottom-left-radius: 3px;
-	padding: 0 0 0 24px;
-	width: 20px;
-}
-
-.share-small .sharrre:hover .share {
-	width: 80px;
-}
-
-.share-small .facebook:hover .share {
-	width: 80px;
-}
-
-.share-small .googlePlus:hover .share {
-	width: 80px;
-}
-
-.share-small .count {
-	border-top-right-radius: 3px;
-	border-bottom-right-radius: 3px;
-	float: right;
-	width: 42px;
-}
-
-.share-small .no-count .share {
-	border-top-right-radius: 3px;
-	border-bottom-right-radius: 3px;
-	width: 80px;
-}
-
-/* Icons */
-.share-small .share:before {
-	width: 15px;
-	height: 15px;
-	top: 4px;
-	left: 8px;
-	position: absolute;
-}
-
-.share-medium .share:before {
-	font-size: 14px;
-	top: 5px;
-	left: 7px;
-}
-
-.share-tall .share:before {
-	bottom: 0;
-	top: auto;
-}
-
-.twitter .share:before {
-	content: "";
-	background: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%2309b0ed%22%3E%3Cpath%20d%3D%22M18.94%204.46c-.49.73-1.11%201.38-1.83%201.9.01.15.01.31.01.47%200%204.85-3.69%2010.44-10.43%2010.44-2.07%200-4-.61-5.63-1.65.29.03.58.05.88.05%201.72%200%203.3-.59%204.55-1.57-1.6-.03-2.95-1.09-3.42-2.55.22.04.45.07.69.07.33%200%20.66-.05.96-.13-1.67-.34-2.94-1.82-2.94-3.6v-.04c.5.27%201.06.44%201.66.46-.98-.66-1.63-1.78-1.63-3.06%200-.67.18-1.3.5-1.84%201.81%202.22%204.51%203.68%207.56%203.83-.06-.27-.1-.55-.1-.84%200-2.02%201.65-3.66%203.67-3.66%201.06%200%202.01.44%202.68%201.16.83-.17%201.62-.47%202.33-.89-.28.85-.86%201.57-1.62%202.02.75-.08%201.45-.28%202.11-.57z%22%2F%3E%3C%2Fsvg%3E') no-repeat;
-}
-
-.share-outlined .twitter:hover .count,
-.share-outlined .twitter:hover .share:before {
-	content: "";
-	background: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%23fff%22%3E%3Cpath%20d%3D%22M18.94%204.46c-.49.73-1.11%201.38-1.83%201.9.01.15.01.31.01.47%200%204.85-3.69%2010.44-10.43%2010.44-2.07%200-4-.61-5.63-1.65.29.03.58.05.88.05%201.72%200%203.3-.59%204.55-1.57-1.6-.03-2.95-1.09-3.42-2.55.22.04.45.07.69.07.33%200%20.66-.05.96-.13-1.67-.34-2.94-1.82-2.94-3.6v-.04c.5.27%201.06.44%201.66.46-.98-.66-1.63-1.78-1.63-3.06%200-.67.18-1.3.5-1.84%201.81%202.22%204.51%203.68%207.56%203.83-.06-.27-.1-.55-.1-.84%200-2.02%201.65-3.66%203.67-3.66%201.06%200%202.01.44%202.68%201.16.83-.17%201.62-.47%202.33-.89-.28.85-.86%201.57-1.62%202.02.75-.08%201.45-.28%202.11-.57z%22%2F%3E%3C%2Fsvg%3E') no-repeat;
-}
-
-.facebook .share:before {
-	content: "";
-	background: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%233d5a98%22%3E%3Cpath%20d%3D%22M8.46%2018h2.93v-7.3h2.45l.37-2.84h-2.82V6.04c0-.82.23-1.38%201.41-1.38h1.51V2.11c-.26-.03-1.15-.11-2.19-.11-2.18%200-3.66%201.33-3.66%203.76v2.1H6v2.84h2.46V18z%22%2F%3E%3C%2Fsvg%3E') no-repeat;
-}
-
-.share-outlined .facebook:hover .count,
-.share-outlined .facebook:hover .share:before {
-	content: "";
-	background: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%23fff%22%3E%3Cpath%20d%3D%22M8.46%2018h2.93v-7.3h2.45l.37-2.84h-2.82V6.04c0-.82.23-1.38%201.41-1.38h1.51V2.11c-.26-.03-1.15-.11-2.19-.11-2.18%200-3.66%201.33-3.66%203.76v2.1H6v2.84h2.46V18z%22%2F%3E%3C%2Fsvg%3E') no-repeat;
-}
-
-.googlePlus .share:before {
-	content: "";
-	background: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%23dd4c39%22%3E%3Cpath%20d%3D%22M6.73%2010h5.4c.05.29.09.57.09.95%200%203.27-2.19%205.6-5.49%205.6-3.17%200-5.73-2.57-5.73-5.73%200-3.17%202.56-5.73%205.73-5.73%201.54%200%202.84.57%203.83%201.5l-1.55%201.5c-.43-.41-1.17-.89-2.28-.89-1.96%200-3.55%201.62-3.55%203.62%200%201.99%201.59%203.61%203.55%203.61%202.26%200%203.11-1.62%203.24-2.47H6.73V10zM19%2010v1.64h-1.64v1.63h-1.63v-1.63h-1.64V10h1.64V8.36h1.63V10H19z%22%2F%3E%3C%2Fsvg%3E') no-repeat;
-}
-
-.share-outlined .googlePlus:hover .count,
-.share-outlined .googlePlus:hover .share:before {
-	content: "";
-	background: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%23fff%22%3E%3Cpath%20d%3D%22M6.73%2010h5.4c.05.29.09.57.09.95%200%203.27-2.19%205.6-5.49%205.6-3.17%200-5.73-2.57-5.73-5.73%200-3.17%202.56-5.73%205.73-5.73%201.54%200%202.84.57%203.83%201.5l-1.55%201.5c-.43-.41-1.17-.89-2.28-.89-1.96%200-3.55%201.62-3.55%203.62%200%201.99%201.59%203.61%203.55%203.61%202.26%200%203.11-1.62%203.24-2.47H6.73V10zM19%2010v1.64h-1.64v1.63h-1.63v-1.63h-1.64V10h1.64V8.36h1.63V10H19z%22%2F%3E%3C%2Fsvg%3E') no-repeat;
-}
-
-.linkedin .share:before 	{ }
-
-.share-small .linkedin .share:before {
-	font-size: 16px;
-	top: 1px;
-}
-
-/* Appearance - filled */
-.share-filled .twitter .share {
-	background: #09b0ed;
-}
-
-.share-filled .twitter .count,
-.share-filled .twitter .count:hover {
-	color: #09b0ed;
+.social-sharing .twitter {
 	border: 1px solid #09b0ed;
 }
 
-.share-filled .facebook .share {
-	background: #3d5a98;
-}
-
-.share-filled .facebook .count,
-.share-filled .facebook .count:hover {
-	color: #3d5a98;
-	border: 1px solid #3d5a98;
-}
-
-.share-filled .googlePlus .share {
-	background: #dd4c39;
-}
-
-.share-filled .googlePlus .count,
-.share-filled .googlePlus .count:hover {
-	color: #dd4c39;
-	border: 1px solid #dd4c39;
-}
-
-.share-filled .linkedin .share {
-	background: #035a87;
-}
-
-.share-filled .linkedin .count,
-.share-filled .linkedin .count:hover {
-	color: #035a87;
-	border: 1px solid #035a87;
-}
-
-.share-filled .twitter:hover .count {
-	background: #09b0ed !important;
-}
-
-.share-filled .facebook:hover .count {
-	background: #3d5a98 !important;
-}
-
-.share-filled .googlePlus:hover .count {
-	background: #dd4c39 !important;
-}
-
-.share-filled .linkedin:hover .count {
-	background: #035a87 !important;
-}
-
-.share-filled .sharrre:hover .count {
-	color: #fff;
-}
-
-/* Appearance - outlined */
-.share-outlined .twitter .share,
-.share-outlined .twitter .count,
-.share-outlined .twitter .count:hover {
-	border: 1px solid #09b0ed;
-	color: #09b0ed;
-}
-
-.share-outlined .facebook .share,
-.share-outlined .facebook .count,
-.share-outlined .facebook .count:hover {
-	border: 1px solid #3d5a98;
-	color: #3d5a98;
-}
-
-.share-outlined .googlePlus .share,
-.share-outlined .googlePlus .count,
-.share-outlined .googlePlus .count:hover {
-	border: 1px solid #dd4c39;
-	color: #dd4c39;
-}
-
-.share-outlined.share-small .share {
-	border-right: none !important;
-}
-
-.share-outlined.share-small .twitter .share {
-	border-right: 1px solid #09b0ed !important;
-}
-
-.share-outlined .twitter:hover .share,
-.share-outlined .twitter:hover .count {
+.social-sharing .twitter:hover {
 	background: #09b0ed;
 }
 
-.share-outlined .facebook:hover .share,
-.share-outlined .facebook:hover .count {
+.social-sharing .twitter a {
+	color: #09b0ed;
+}
+
+.social-sharing .facebook {
+	border: 1px solid #3d5a98;
+}
+
+.social-sharing .facebook:hover {
 	background: #3d5a98;
 }
 
-.share-outlined .googlePlus:hover .share,
-.share-outlined .googlePlus:hover .count {
+.social-sharing .facebook a {
+	color: #3d5a98;
+}
+
+.social-sharing .googleplus {
+	border: 1px solid #dd4c39;
+}
+
+.social-sharing .googleplus:hover {
 	background: #dd4c39;
 }
 
-.share-outlined .sharrre:hover .count,
-.share-outlined .sharrre:hover .share {
+.social-sharing .googleplus a {
+	color: #dd4c39;
+}
+
+.social-sharing .share-button:hover a {
 	color: #fff;
+}
+
+.social-sharing .share-button:hover svg {
+	fill: #fff;
 }
 
 /*
