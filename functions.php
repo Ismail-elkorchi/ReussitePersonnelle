@@ -199,23 +199,6 @@ function reussitepersonnelle_enqueue_global_script() {
 	wp_enqueue_script( 'reussitepersonnelle-global-script', get_stylesheet_directory_uri() . '/lib/js/global.js', array( 'jquery' ), '1.0.0', true );
 }
 
-
-
-//* Hook sticky message before site header
-add_action( 'genesis_after', 'mobile_first_sticky_message' );
-function mobile_first_sticky_message() {
-	if(is_single()){
-
-
-		?>
-	        <div class="sticky-message">
-	            <p>Attirez la prosp&eacute;rit&eacute; et le succ&egrave;s dans votre vie.</p>
-	            <a onclick="javascript:__gaTracker('send', 'event', 'sticky-button', 'changer-de-vie');" href="https://www.reussitepersonnelle.com/changer-de-vie/">Changez votre vie</a>
-	        </div>
-	    <?php
-	}
-}
-
 //Add Footer Newsletter Call to action
 add_action('genesis_before_footer', 'reussitepersonnelle_newsletter_footer');
 function reussitepersonnelle_newsletter_footer(){
