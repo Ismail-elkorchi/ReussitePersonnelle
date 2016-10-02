@@ -13,9 +13,7 @@ add_filter('xmlrpc_enabled', '__return_false');
 
 
 //* Edd Customisition
-require(CHILD_DIR.'/lib/edd_templates/functions.php');
-//remove_action( 'wp_enqueue_scripts', 'edd_register_styles' );
-//	remove_action( 'wp_enqueue_scripts', 'edd_load_scripts' );
+require(CHILD_DIR.'/lib/edd_templates/checkout.php');
 
 //* Child theme
 define( 'CHILD_THEME_NAME', __( 'Reussite Personnelle 2015', 'reussitepersonnelle' ) );
@@ -44,40 +42,7 @@ function SearchFilter($query) {
 
 /** Move Breadcrumbs Below Main Nav **/
 remove_action('genesis_before_loop', 'genesis_do_breadcrumbs');
-add_action('genesis_before_content', 'focus_do_breadcrumbs');
-
-function focus_do_breadcrumbs() {
-
-
-	if (
-		( ( is_front_page() || is_home() ) && ! genesis_get_option( 'breadcrumb_home' ) ) ||
-		( is_single() && ! genesis_get_option( 'breadcrumb_single' ) ) ||
-		( is_page() && ! is_page('950') ) ||
-		( ( is_archive() || is_search() ) && ! genesis_get_option( 'breadcrumb_archive' ) ) ||
-		( is_404() && ! genesis_get_option( 'breadcrumb_404' ) ) ||
-		( is_attachment() && ! genesis_get_option( 'breadcrumb_attachment' ) )
-	)
-		return;
-
-	if ( function_exists( 'bcn_display' ) ) {
-		echo '<div class="breadcrumb">';
-		bcn_display();
-		echo '</div>';
-	}
-	elseif ( function_exists( 'yoast_breadcrumb' ) ) {
-		yoast_breadcrumb( '<div class="breadcrumb">', '</div>' );
-	}
-	elseif ( function_exists( 'breadcrumbs' ) ) {
-		breadcrumbs();
-	}
-	elseif ( function_exists( 'crumbs' ) ) {
-		crumbs();
-	}
-	else {
-		genesis_breadcrumb();
-	}
-
-}
+add_action('genesis_before_content', 'genesis_do_breadcrumbs');
 
 
 //* Add Blog Link to the BreadCrumb
