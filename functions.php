@@ -150,14 +150,6 @@ function reussitepersonnelle_menu_extras($menu, $args) {
 }
 add_filter('wp_nav_menu_items','reussitepersonnelle_menu_extras', 9, 2);
 
-
-
-//* Enqueue Google fonts
-add_action( 'wp_enqueue_scripts', 'reussitepersonnelle_google_fonts' );
-function reussitepersonnelle_google_fonts() {
-	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Montserrat:300,400,700|Neuton:700,300,400', array(), CHILD_THEME_VERSION );
-}
-
 // Enqueue global js script
 add_action( 'wp_enqueue_scripts', 'reussitepersonnelle_enqueue_global_script' );
 function reussitepersonnelle_enqueue_global_script() {
