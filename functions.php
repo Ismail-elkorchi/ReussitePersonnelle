@@ -150,6 +150,15 @@ function reussitepersonnelle_menu_extras($menu, $args) {
 }
 add_filter('wp_nav_menu_items','reussitepersonnelle_menu_extras', 9, 2);
 
+//* Remove Jquery migrate
+add_filter( 'wp_default_scripts', 'reussitepersonnelle_remove_jquery_migrate' );
+function reussitepersonnelle_remove_jquery_migrate( &$scripts) {
+  if(!is_admin()) {
+    $scripts->remove( 'jquery');
+    $scripts->add( 'jquery', false, array( 'jquery-core' ), '1.12.4' );
+  }
+}
+
 // Enqueue global js script
 add_action( 'wp_enqueue_scripts', 'reussitepersonnelle_enqueue_global_script' );
 function reussitepersonnelle_enqueue_global_script() {
