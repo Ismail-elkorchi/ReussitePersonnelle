@@ -44,14 +44,12 @@ function SearchFilter($query) {
 remove_action('genesis_before_loop', 'genesis_do_breadcrumbs');
 add_action('genesis_before_content', 'genesis_do_breadcrumbs');
 
-//* Customize the post info function
-add_filter( 'genesis_post_info', 'post_info_filter' );
-function post_info_filter($post_info) {
-if (!is_page()) {
-    $post_info = 'Par [post_author] [post_comments] [post_edit]';
-    return $post_info;
-}}
-
+//* Customize the entry meta in the entry header
+add_filter( 'genesis_post_info', 'reussitepersonnelle_post_info_filter' );
+function reussitepersonnelle_post_info_filter($post_info) {
+	$post_info = 'Par [post_author] [post_comments] [post_edit]';
+	return $post_info;
+}
 
 //* Remove the entry meta in the entry footer (requires HTML5 theme support)
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
