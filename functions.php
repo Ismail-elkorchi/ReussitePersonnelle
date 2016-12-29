@@ -44,27 +44,6 @@ function SearchFilter($query) {
 remove_action('genesis_before_loop', 'genesis_do_breadcrumbs');
 add_action('genesis_before_content', 'genesis_do_breadcrumbs');
 
-
-//* Add Blog Link to the BreadCrumb
-function add_blog_link_to_breadcrumb($links){
-
-	if(!is_page()){
-
-		$output = array_slice($links, 0, 1);
-		$output[1] = array('url' => 'https://www.reussitepersonnelle.com/blog/', 'text' => 'Blog');
-		$output[2] = $links[1];
-		if (!is_category() && !is_archive() && !is_search()){
-			$output[3] = $links[2];
-		}
-		return $output;
-	}else{
-		return 	$links;
-	}
-}
-add_filter( 'wpseo_breadcrumb_links', 'add_blog_link_to_breadcrumb' );
-
-
-
 //* Customize the post info function
 add_filter( 'genesis_post_info', 'post_info_filter' );
 function post_info_filter($post_info) {
