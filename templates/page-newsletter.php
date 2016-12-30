@@ -9,7 +9,7 @@ remove_action( 'wp_enqueue_scripts', 'edd_register_styles' );
 // Ajouter une classe body personnalisée  à la l'entete "head"
 add_filter( 'body_class', 'add_body_class' );
 function add_body_class( $classes ) {
-   $classes[] = 'page-newsletter';
+   $classes[] = 'page-newsletter full-width';
    return $classes;
 }
 
@@ -41,7 +41,7 @@ add_action('genesis_before_loop', 'reussitepersonnelle_newsletter');
 
 function reussitepersonnelle_newsletter(){
 	?>
-	
+
 		<div class="front-left">
 			<section id="text-20" class="widget widget_text">
 				<div class="widget-wrap">
@@ -53,23 +53,23 @@ function reussitepersonnelle_newsletter(){
 				</div>
 			</section>
 		</div>
-	
+
 		<div class="front-right">
 			<div class="newsletter">
-			
+
 				<h4 class="widget-title">Newsletter gratuite</h4>
 				<p class="center">Livr&eacute;e &agrave; votre bo&icirc;te de r&eacute;ception.</p>
 				<div id="mc_embed_signup">
-				
+
 					<form action="https://www.reussitepersonnelle.com/sendy/subscribe" method="POST" accept-charset="utf-8">
-						
+
 						<div id="mc_embed_signup_scroll">
-						
+
 							<div class="mc-field-group">
 								<label for="name">Pr&eacute;nom</label>
 								<input type="text" name="name" id="name" autocomplete="given-name"/>
 							</div>
-							
+
 							<div class="mc-field-group">
 								<label for="email">Email</label><br/>
 								<input type="email" name="email" id="email" autocomplete="email"/>

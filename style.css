@@ -1247,22 +1247,6 @@ Content Area
 	text-align: center;
 }
 
-/* Article Newsletter
---------------------------------------------- */
-
-.article-newsletter .title-area {
-	float: none;
-	text-align: center;
-}
-
-/* Newsletter
------------------------------------------------------------------------------ */
-
-.page-newsletter .title-area {
-	float: none;
-	text-align: center;
-}
-
 .newsletter {
 	background-color: #333;
 	color: #fff;
