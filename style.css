@@ -378,7 +378,6 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"],
 textarea:focus,
-.responsive-menu-icon::before,
 .changez-votre-vie {
 	-webkit-transition: all 0.1s ease-in-out;
 	-moz-transition: all 0.1s ease-in-out;
@@ -1080,13 +1079,89 @@ Site Navigation
 .responsive-menu-icon {
 	cursor: pointer;
 	display: none;
-	text-align: center;
+	color: transparent;
+	text-indent: 100%;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
-.responsive-menu-icon::before {
-	content: "";
-	background: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2225%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%23fff%22%3E%3Cpath%20d%3D%22M3%204h14v2H3V4zm0%205h14v2H3V9zm0%205h14v2H3v-2z%22%2F%3E%3C%2Fsvg%3E') no-repeat;
-	padding: 0 20px 0 0;
+.responsive-menu-icon span {
+	/* nav icon created in CSS */
+	position: absolute;
+	height: 2px;
+	width: 20px;
+	left: 50%;
+	top: 50%;
+	bottom: auto;
+	right: auto;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	-moz-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	-o-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+	background-color: #fff;
+	-webkit-transition: background-color 0.3s;
+	-moz-transition: background-color 0.3s;
+	transition: background-color 0.3s;
+}
+
+.responsive-menu-icon span::before,
+.responsive-menu-icon span::after {
+	/* upper and lower lines of the menu icon */
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	/* Force Hardware Acceleration */
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transition: -webkit-transform 0.3s;
+	-moz-transition: -moz-transform 0.3s;
+	transition: transform 0.3s;
+}
+
+.responsive-menu-icon span::before {
+	-webkit-transform: translateY(-6px);
+	-moz-transform: translateY(-6px);
+	-ms-transform: translateY(-6px);
+	-o-transform: translateY(-6px);
+	transform: translateY(-6px);
+}
+
+.responsive-menu-icon span::after {
+	-webkit-transform: translateY(6px);
+	-moz-transform: translateY(6px);
+	-ms-transform: translateY(6px);
+	-o-transform: translateY(6px);
+	transform: translateY(6px);
+}
+
+.nav-is-visible .responsive-menu-icon span {
+	background-color: rgba(255, 255, 255, 0);
+}
+
+.nav-is-visible .responsive-menu-icon span::before {
+	-webkit-transform: translateY(0) rotate(-45deg);
+	-moz-transform: translateY(0) rotate(-45deg);
+	-ms-transform: translateY(0) rotate(-45deg);
+	-o-transform: translateY(0) rotate(-45deg);
+	transform: translateY(0) rotate(-45deg);
+}
+
+.nav-is-visible .responsive-menu-icon span::after {
+	-webkit-transform: translateY(0) rotate(45deg);
+	-moz-transform: translateY(0) rotate(45deg);
+	-ms-transform: translateY(0) rotate(45deg);
+	-o-transform: translateY(0) rotate(45deg);
+	transform: translateY(0) rotate(45deg);
 }
 
 /*
@@ -1915,10 +1990,9 @@ Media Queries
 	}
 
 	.responsive-menu-icon {
-		float: right;
-		line-height: 40px;
-		height: 30px;
-		width: 30px;
+		position: absolute;
+		right: 0;
+		width: 50px;
 	}
 
 	.genesis-nav-menu.responsive-menu .menu-item {
