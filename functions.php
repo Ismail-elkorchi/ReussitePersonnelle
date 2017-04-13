@@ -134,12 +134,12 @@ function reussitepersonnelle_remove_jquery_migrate( &$scripts) {
   }
 }
 
-// Enqueue global js script
+// Enqueue scripts and styles
 add_action( 'wp_enqueue_scripts', 'reussitepersonnelle_enqueue_global_script' );
 function reussitepersonnelle_enqueue_global_script() {
 	wp_enqueue_script( 'reussitepersonnelle-global-script', get_stylesheet_directory_uri() . '/lib/js/global.js', array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_style( 'reussitepersonnelle_rtl_css', get_stylesheet_directory_uri() . '/lib/css/rtl.css', array(), CHILD_THEME_VERSION );
 }
-
 
 //* Customize the site footer
 remove_action( 'genesis_footer', 'genesis_footer_markup_open', 5 );
