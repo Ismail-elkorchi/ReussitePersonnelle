@@ -118,14 +118,12 @@ function disable_emojis_tinymce( $plugins ) {
 }
 
 //* Add Extra Code to Primary Menu
+add_filter('wp_nav_menu_items','reussitepersonnelle_menu_extras', 10, 2);
 function reussitepersonnelle_menu_extras($menu, $args) {
-
-	$extras = '<li class="menu-item changez-votre-vie"><a onclick="javascript:__gaTracker(\'send\', \'event\', \'top-nav\', \'changer-de-vie\');" href="https://www.reussitepersonnelle.com/changer-de-vie/">Changez votre vie</a></li>';
-	$extras .= '<li class="search"><a id="main-nav-search-link" class="icon-search"></a><div class="search-div">' . get_search_form( false ) . '</div></li>';
-
-	return $menu . $extras;
+	ob_start();
+	get_template_part('lib/partials/menu-extra');
+	return $menu . ob_get_clean();
 }
-add_filter('wp_nav_menu_items','reussitepersonnelle_menu_extras', 9, 2);
 
 //* Remove Jquery migrate
 add_filter( 'wp_default_scripts', 'reussitepersonnelle_remove_jquery_migrate' );
@@ -142,43 +140,14 @@ function reussitepersonnelle_enqueue_global_script() {
 	wp_enqueue_script( 'reussitepersonnelle-global-script', get_stylesheet_directory_uri() . '/lib/js/global.js', array( 'jquery' ), '1.0.0', true );
 }
 
-//Add Footer Newsletter Call to action
-add_action('genesis_before_footer', 'reussitepersonnelle_newsletter_footer');
-function reussitepersonnelle_newsletter_footer(){
-	if(is_single() && get_comments_number() > 1){
-		?>
-		<div class="newsletter-footer">
-			<div class="wrap">
-				<h4 class="widget-title widgettitle">&Ecirc;tes-vous pr&ecirc;t &agrave; faire passer votre vie au niveau sup&eacute;rieur ?</h4>
-				<p>Rejoignez la communaut&eacute; R&eacute;ussite Personnelle. Ce sera plus amusant que vous pensez!</p>
-				<p><a class="button" href="https://www.reussitepersonnelle.com/newsletter/">s&#39;inscrire</a></p>
-			</div>
-		</div>
-	<?php
-	}
-}
 
 //* Customize the site footer
 remove_action( 'genesis_footer', 'genesis_footer_markup_open', 5 );
 remove_action( 'genesis_footer', 'genesis_do_footer' );
 remove_action( 'genesis_footer', 'genesis_footer_markup_close', 15 );
 add_action( 'genesis_footer', 'reussitepersonnelle_custom_footer' );
-function reussitepersonnelle_custom_footer() { ?>
-
-	<div class="site-footer">
-		<div class="wrap">
-			<div class="left">
-				<p>
-					R&eacute;ussite Personnelle &copy; 2012-<?php echo date('Y'); ?>  &middot; <a href="https://www.reussitepersonnelle.com/politique-confidentialite/">Politique de confidentialit&eacute;</a> | <a href="https://www.reussitepersonnelle.com/politique-de-remboursement/">Politique de remboursement</a>
-				</p>
-			</div>
-			<div class="right">
-				<p>Langues &middot; <a href="https://www.reussitepersonnelle.com/en/">Anglais</a> | <a href="https://www.reussitepersonnelle.com/ar/">Arabe</a> | Fran&ccedil;ais</p>
-			</div>
-		</div>
-	</div>
-
-<?php
+function reussitepersonnelle_custom_footer() {
+	get_template_part('lib/partials/footer');
 }
 
 
