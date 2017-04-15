@@ -1,12 +1,12 @@
 <div class="site-footer">
 	<div class="wrap">
-		<div class="left">
+		<div class="<?php echo is_rtl() ?  "alignright" :  "alignleft"; ?>">
 			<p>
-				R&eacute;ussite Personnelle &copy; 2012-<?php echo date('Y'); ?>  &middot; <a href="https://www.reussitepersonnelle.com/politique-confidentialite/">Politique de confidentialit&eacute;</a> | <a href="https://www.reussitepersonnelle.com/politique-de-remboursement/">Politique de remboursement</a>
+				<?php esc_html_e('R&eacute;ussite Personnelle', 'reussitepersonnelle'); ?> &copy; 2012-<?php echo date('Y'); ?>  &middot; <a href="<?php esc_html_e('https://www.reussitepersonnelle.com/politique-confidentialite/', 'reussitepersonnelle'); ?>"><?php esc_html_e('Politique de confidentialit&eacute;', 'reussitepersonnelle'); ?></a> | <a href="<?php esc_html_e('https://www.reussitepersonnelle.com/politique-de-remboursement/', 'reussitepersonnelle'); ?>"><?php esc_html_e('Politique de remboursement', 'reussitepersonnelle'); ?></a>
 			</p>
 		</div>
-		<div class="right">
-			<p>Langues &middot; <a href="https://www.reussitepersonnelle.com/ar/">Arabe</a> | Fran&ccedil;ais</p>
+		<div class="<?php echo is_rtl() ?  "alignleft" :  "alignright"; ?>">
+			<p>Langues &middot; <a href="<?php esc_html_e('https://www.reussitepersonnelle.com/ar/', 'reussitepersonnelle'); ?>"><?php esc_html_e('Arabe', 'reussitepersonnelle'); ?></a> | <?php esc_html_e('Fran&ccedil;ais', 'reussitepersonnelle'); ?></p>
 		</div>
 	</div>
 </div>
