@@ -3,6 +3,8 @@
 define('GENESIS_LANGUAGES_DIR', STYLESHEETPATH.'/languages');
 define('GENESIS_LANGUAGES_URL', STYLESHEETPATH.'/languages');
 
+load_theme_textdomain( 'reussitepersonnelle', STYLESHEETPATH.'/languages' );
+
 // Start the engine
 require_once(TEMPLATEPATH.'/lib/init.php');
 
@@ -14,6 +16,9 @@ add_filter('xmlrpc_enabled', '__return_false');
 
 //* Edd Customisition
 require(CHILD_DIR.'/lib/edd_templates/checkout.php');
+
+// Add helper functions.
+require(CHILD_DIR.'/lib/helper-functions.php');
 
 //* Child theme
 define( 'CHILD_THEME_NAME', __( 'Reussite Personnelle 2015', 'reussitepersonnelle' ) );
@@ -47,7 +52,7 @@ add_action('genesis_before_content', 'genesis_do_breadcrumbs');
 //* Customize the entry meta in the entry header
 add_filter( 'genesis_post_info', 'reussitepersonnelle_post_info_filter' );
 function reussitepersonnelle_post_info_filter($post_info) {
-	$post_info = 'Par [post_author] [post_comments] [post_edit]';
+	$post_info = __('Par', 'reussitepersonnelle') . ' [post_author] [post_comments] [post_edit]';
 	return $post_info;
 }
 
