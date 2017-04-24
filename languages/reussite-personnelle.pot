@@ -1,0 +1,229 @@
+# <!=Copyright (C) 2017 Ismail El Korchi
+# This file is distributed under the GPL-2.0+.=!>
+msgid ""
+msgstr ""
+"Project-Id-Version: Réussite Personnelle 2015 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/style\n"
+"POT-Creation-Date: 2017-04-24 15:31:42+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n1.0.0\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;_ex:1,2c;_nx:4c,1,2;_"
+"nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2;"
+"\n"
+"X-Textdomain-Support: yes\n"
+
+#: functions.php:24
+msgid "Reussite Personnelle 2015"
+msgstr ""
+
+#: functions.php:55
+msgid "Par"
+msgstr ""
+
+#: functions.php:67
+msgid "Primary Navigation Menu"
+msgstr ""
+
+#: lib/partials/footer.php:5
+msgid "R&eacute;ussite Personnelle"
+msgstr ""
+
+#: lib/partials/footer.php:5
+msgid "Politique de confidentialit&eacute;"
+msgstr ""
+
+#: lib/partials/footer.php:5
+msgid "Politique de remboursement"
+msgstr ""
+
+#: lib/partials/footer.php:9
+msgid "Langues"
+msgstr ""
+
+#: lib/partials/footer.php:9
+msgid "Arabe"
+msgstr ""
+
+#: lib/partials/footer.php:9
+msgid "Fran&ccedil;ais"
+msgstr ""
+
+#: lib/partials/home.php:3
+msgid "Le guide qui changera votre vie"
+msgstr ""
+
+#: lib/partials/home.php:5
+msgid "Le bonheur est &agrave; la port&eacute;e de tous..."
+msgstr ""
+
+#: lib/partials/home.php:5
+msgid ""
+"&agrave; condition d'accepter l'&eacute;volution personnelle et ses "
+"implications"
+msgstr ""
+
+#: lib/partials/home.php:6
+msgid "D&eacute;couvrez notre guide"
+msgstr ""
+
+#: lib/partials/home.php:15
+msgid "Blog"
+msgstr ""
+
+#: lib/partials/home.php:16
+msgid ""
+"Nos articles gratuits, accessible depuis le blog, vous aidons &agrave; "
+"assurer votre &eacute;panouissement personnel au quotidien."
+msgstr ""
+
+#: lib/partials/home.php:17
+msgid "Lire le blog"
+msgstr ""
+
+#: lib/partials/home.php:21
+msgid "Newsletter"
+msgstr ""
+
+#: lib/partials/home.php:22
+msgid ""
+"Recevez nos conseils exclusifs dir&eacute;ctement sur votre boite email. "
+"Votre vie ne sera plus jamais la m&ecirc;me."
+msgstr ""
+
+#: lib/partials/home.php:23
+msgid "Inscrivez-vous"
+msgstr ""
+
+#: lib/partials/home.php:27
+msgid "&Agrave; propos"
+msgstr ""
+
+#: lib/partials/home.php:28
+msgid ""
+"Notre site vous donne les outils pour vous aider &agrave; d&eacute;velopper "
+"une existence sereine et heureuse."
+msgstr ""
+
+#: lib/partials/home.php:29
+msgid "En savoir plus"
+msgstr ""
+
+#: lib/partials/menu-extra.php:2
+msgid "Changez votre vie"
+msgstr ""
+
+#: lib/partials/newsletter-banner.php:3
+msgid ""
+"&Ecirc;tes-vous pr&ecirc;t &agrave; faire passer votre vie au niveau "
+"sup&eacute;rieur ?"
+msgstr ""
+
+#: lib/partials/newsletter-banner.php:4
+msgid ""
+"Rejoignez la communaut&eacute; R&eacute;ussite Personnelle. Ce sera plus "
+"amusant que vous pensez!"
+msgstr ""
+
+#: lib/partials/newsletter-banner.php:5
+msgid "s&#39;inscrire"
+msgstr ""
+
+#: lib/partials/newsletter-subscription.php:4
+msgid "Concevez une vie simple."
+msgstr ""
+
+#: lib/partials/newsletter-subscription.php:6
+msgid ""
+"Les secrets du bien-&ecirc;tre et de l&rsquo;apaisement psychologique se "
+"pr&eacute;sentent sous la forme de 7 articles gratuits."
+msgstr ""
+
+#: lib/partials/newsletter-subscription.php:7
+msgid ""
+"Le but de ces derniers est de vous redonner les r&ecirc;nes de votre vie, "
+"vous permettant ainsi de vous affirmer et d&rsquo;enfin profiter pleinement "
+"du temps qui vous est imparti."
+msgstr ""
+
+#: lib/partials/newsletter-subscription.php:16
+msgid "Newsletter gratuite"
+msgstr ""
+
+#: lib/partials/newsletter-subscription.php:17
+msgid "Livr&eacute;e &agrave; votre bo&icirc;te de r&eacute;ception."
+msgstr ""
+
+#: lib/partials/newsletter-subscription.php:25
+msgid "Pr&eacute;nom"
+msgstr ""
+
+#: lib/partials/newsletter-subscription.php:30
+msgid "Email"
+msgstr ""
+
+#: lib/partials/newsletter-subscription.php:35
+msgid "Rejoindre gratuitement"
+msgstr ""
+
+#: lib/partials/single-calltoaction.php:2
+msgid "Attirez la prosp&eacute;rit&eacute; et le succ&egrave;s dans votre vie"
+msgstr ""
+
+#: lib/partials/single-calltoaction.php:3
+msgid ""
+"&laquo; Changer de vie : le guide d&rsquo;un pas vers le bonheur &raquo;, "
+"est une m&eacute;thode originale qui va r&eacute;volutionner votre "
+"quotidien et vous permettre de devenir la personne que vous r&ecirc;vez "
+"secr&egrave;tement d&rsquo;&ecirc;tre !"
+msgstr ""
+
+#: lib/partials/single-calltoaction.php:4
+msgid "Changez votre vie!"
+msgstr ""
+
+#: lib/partials/social-share.php:18
+msgid "Tweeter"
+msgstr ""
+
+#: lib/partials/social-share.php:22 lib/partials/social-share.php:26
+msgid "Partager"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Réussite Personnelle 2015"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "https://www.reussitepersonnelle.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Responsive and HTML5 theme built for the Genesis Framework."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Ismail El Korchi"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Article newsletter"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Full Width"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Page de vente"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Page newsletter"
+msgstr ""
