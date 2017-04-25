@@ -2,10 +2,17 @@ body.rtl {
 	font-family: Tahoma,Arial,sans-serif;
 }
 
-.title-area {
+.rtl .title-area {
 	float: right;
 }
 
-.nav-primary .genesis-nav-menu {
+.rtl .nav-primary .genesis-nav-menu {
     float: left;
+}
+
+.rtl  .home-intro a.button,
+.rtl .home-features a.button,
+.rtl .single-calltoaction a.button,
+.rtl  .home-features h4{
+	letter-spacing: 0;
 }
