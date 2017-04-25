@@ -10,9 +10,18 @@ body.rtl {
     float: left;
 }
 
+.rtl .search-div {
+	left: 0;
+	right: initial;
+}
+
+.rtl .search-div .search-form input[type="submit"] {
+	left: 1px;
+}
+
 .rtl  .home-intro a.button,
 .rtl .home-features a.button,
 .rtl .single-calltoaction a.button,
-.rtl  .home-features h4{
+.rtl  .home-features h4 {
 	letter-spacing: 0;
 }
