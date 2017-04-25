@@ -6,7 +6,14 @@
 			</p>
 		</div>
 		<div class="<?php echo is_rtl() ?  "alignleft" :  "alignright"; ?>">
-			<p><?php esc_html_e('Langues', 'reussitepersonnelle'); ?> &middot; <a href="https://www.reussitepersonnelle.com/ar/"><?php esc_html_e('Arabe', 'reussitepersonnelle'); ?></a> | <?php esc_html_e('Fran&ccedil;ais', 'reussitepersonnelle'); ?></p>
+			<p><?php esc_html_e('Langues', 'reussitepersonnelle'); ?> &middot;
+				<?php if( ! is_rtl() ) : ?>
+				<a href="https://www.reussitepersonnelle.com/ar/"><?php esc_html_e('Arabe', 'reussitepersonnelle'); ?></a> | <?php esc_html_e('Fran&ccedil;ais', 'reussitepersonnelle'); ?>
+				<?php endif; ?>
+				<?php if( is_rtl() ) : ?>
+				<a href="https://www.reussitepersonnelle.com/ar/"><?php esc_html_e('Fran&ccedil;ais', 'reussitepersonnelle'); ?></a> | <?php esc_html_e('Arabe', 'reussitepersonnelle'); ?>
+				<?php endif; ?>
+			</p>
 		</div>
 	</div>
 </div>
