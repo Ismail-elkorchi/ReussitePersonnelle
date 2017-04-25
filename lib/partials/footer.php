@@ -11,7 +11,7 @@
 				<a href="https://www.reussitepersonnelle.com/ar/"><?php esc_html_e('Arabe', 'reussitepersonnelle'); ?></a> | <?php esc_html_e('Fran&ccedil;ais', 'reussitepersonnelle'); ?>
 				<?php endif; ?>
 				<?php if( is_rtl() ) : ?>
-				<a href="https://www.reussitepersonnelle.com/ar/"><?php esc_html_e('Fran&ccedil;ais', 'reussitepersonnelle'); ?></a> | <?php esc_html_e('Arabe', 'reussitepersonnelle'); ?>
+				<a href="https://www.reussitepersonnelle.com/"><?php esc_html_e('Fran&ccedil;ais', 'reussitepersonnelle'); ?></a> | <?php esc_html_e('Arabe', 'reussitepersonnelle'); ?>
 				<?php endif; ?>
 			</p>
 		</div>
