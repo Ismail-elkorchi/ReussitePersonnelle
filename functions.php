@@ -1,7 +1,7 @@
 <?php
 
-define('GENESIS_LANGUAGES_DIR', STYLESHEETPATH.'/languages');
-define('GENESIS_LANGUAGES_URL', STYLESHEETPATH.'/languages');
+define('GENESIS_LANGUAGES_DIR', STYLESHEETPATH.'/languages/genesis/');
+define('GENESIS_LANGUAGES_URL', STYLESHEETPATH.'/languages/genesis/');
 
 load_theme_textdomain( 'reussitepersonnelle', STYLESHEETPATH.'/languages' );
 
