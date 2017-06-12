@@ -29,7 +29,16 @@ add_theme_support( 'genesis-responsive-viewport' );
 // Remove the date and time on comments in Genesis child themes
 add_filter( 'genesis_show_comment_date', '__return_false' );
 
-
+// Replace gravatar with the first letter of the commentator's name
+add_filter('get_avatar', 'reussitepersonnelle_gravatar_filter', 10, 5);
+function reussitepersonnelle_gravatar_filter($avatar) {
+	if( have_comments() ){
+		$author = get_comment_author();
+		return '<span class="avatar">' . mb_substr( $author, 0, 1 ) . '</span>';
+	} else {
+		return $avatar;
+	}
+}
 
 //* Return articles only when search
 add_filter('pre_get_posts','SearchFilter');
