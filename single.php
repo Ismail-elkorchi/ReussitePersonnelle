@@ -1,8 +1,5 @@
 <?php
 
-remove_action( 'wp_enqueue_scripts', 'edd_load_scripts' );
-remove_action( 'wp_enqueue_scripts', 'edd_register_styles' );
-
 add_action('genesis_entry_footer', 'reussitepersonnelle_ad');
 function reussitepersonnelle_ad(){
 	get_template_part('lib/partials/single-calltoaction');

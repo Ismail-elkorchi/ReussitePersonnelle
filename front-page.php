@@ -2,9 +2,6 @@
 add_filter('genesis_pre_get_option_site_layout', '__genesis_return_full_width_content');
 remove_action('genesis_after_header', 'genesis_do_subnav');
 
-remove_action( 'wp_enqueue_scripts', 'edd_load_scripts' );
-remove_action( 'wp_enqueue_scripts', 'edd_register_styles' );
-
 add_action('genesis_before_content','reussitepersonnelle_homepage');
 function reussitepersonnelle_homepage() {
 	get_template_part('lib/partials/home');

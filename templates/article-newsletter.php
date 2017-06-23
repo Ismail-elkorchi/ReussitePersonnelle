@@ -3,9 +3,6 @@
 Template Name: Article newsletter
 */
 
-remove_action( 'wp_enqueue_scripts', 'edd_load_scripts' );
-remove_action( 'wp_enqueue_scripts', 'edd_register_styles' );
-
 // Ajouter une classe body personnalisée  à la l'entete "head"
 add_filter( 'body_class', 'add_body_class' );
 function add_body_class( $classes ) {

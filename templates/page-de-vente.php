@@ -3,9 +3,6 @@
 Template Name: Page de vente
 */
 
-remove_action( 'wp_enqueue_scripts', 'edd_load_scripts' );
-remove_action( 'wp_enqueue_scripts', 'edd_register_styles' );
-
 // Ajouter une classe body personnalisée  à la l'entete "head"
 add_filter( 'body_class', 'add_body_class' );
 function add_body_class( $classes ) {
@@ -20,7 +17,7 @@ remove_theme_support( 'genesis-menus' );
 //* Remove the header right widget area
 unregister_sidebar( 'header-right' );
 
-// Remove header, navigation, breadcrumbs, footer widgets, footer 
+// Remove header, navigation, breadcrumbs, footer widgets, footer
 //remove_action( 'genesis_header', 'genesis_header_markup_open', 5 );
 //remove_action( 'genesis_header', 'genesis_do_header' );
 //remove_action( 'genesis_header', 'genesis_header_markup_close', 15 );

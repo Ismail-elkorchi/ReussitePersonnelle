@@ -11,10 +11,6 @@ remove_action( 'wp_head', 'genesis_load_favicon' );
 //Desactivate Wordpress XML RPC
 add_filter('xmlrpc_enabled', '__return_false');
 
-
-//* Edd Customisition
-require(CHILD_DIR.'/lib/edd_templates/checkout.php');
-
 //* Child theme
 define( 'CHILD_THEME_NAME', __( 'Reussite Personnelle 2015', 'reussitepersonnelle' ) );
 define( 'CHILD_THEME_URL', 'https://www.reussitepersonnelle.com' );
