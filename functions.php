@@ -6,14 +6,13 @@ define('GENESIS_LANGUAGES_URL', STYLESHEETPATH.'/languages');
 // Start the engine
 require_once(TEMPLATEPATH.'/lib/init.php');
 
+// Woocommerce Customisition
+require_once( CHILD_DIR . '/lib/woocommerce/woocommerce.php' );
+
 remove_action( 'wp_head', 'genesis_load_favicon' );
 
 //Desactivate Wordpress XML RPC
 add_filter('xmlrpc_enabled', '__return_false');
-
-
-//* Edd Customisition
-require(CHILD_DIR.'/lib/edd_templates/checkout.php');
 
 //* Child theme
 define( 'CHILD_THEME_NAME', __( 'Reussite Personnelle 2015', 'reussitepersonnelle' ) );

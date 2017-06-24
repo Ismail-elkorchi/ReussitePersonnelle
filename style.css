@@ -36,7 +36,6 @@
 		- WordPress
 	- Plugins
 		- Gravity Forms
-		- Easy Digital Download
 	- Site Header
 	- Site Navigation
 		- Primary Navigation
@@ -842,70 +841,6 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 	font-size: 16px;
 	margin-bottom: 20px;
 	padding: 20px;
-}
-
-
-/* Easy Digital Download
---------------------------------------------- */
-#edd_purchase_receipt {
-	border: 1px solid #eee;
-}
-
-table#edd_purchase_receipt td,
-table#edd_purchase_receipt th,
-table#edd_purchase_receipt_products td,
-table#edd_purchase_receipt_products th {
-	padding: 10px;
-	border: 1px solid #eee;
-}
-
-#edd_checkout_form_wrap #edd_final_total_wrap {
-	text-align: center;
-	padding: 25px;
-}
-
-#edd_final_total_wrap .edd_cart_amount {
-	font-weight: 400;
-}
-
-#edd_checkout_form_wrap #edd_final_total_wrap #edd-purchase-button {
-	display: block;
-	font-size: 18px;
-	margin: auto;
-	padding: 16px 30px;
-	font-weight: 300;
-	margin-top: 8px;
-}
-
-#edd_final_total_wrap strong,
-#edd_final_total_wrap .edd_cart_amount {
-	font-size: 20px;
-}
-
-#edd_checkout_form_wrap legend {
-	text-align: center;
-}
-
-#edd_secure_site_wrapper {
-	position: absolute;
-	width: 200px;
-	right: 20px;
-	border: 1px solid #eee;
-	text-align: center;
-	font-weight: 300 !important;
-	padding: 10px !important;
-	box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-	-webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-}
-
-#edd_checkout_form_wrap input.edd-input {
-	width: 50% !important;
-}
-
-#ssl-seal {
-	position: absolute;
-	right: 50px;
-	top: 250px;
 }
 
 
@@ -2108,21 +2043,5 @@ Media Queries
 	.front-right,
 	.page-newsletter .content {
 		width: 100%;
-	}
-
-	#edd_checkout_form_wrap input.edd-input {
-		width: 100% !important;
-	}
-
-	#edd_secure_site_wrapper,
-	#ssl-seal,
-	.edd_cart_item_price {
-		display: none;
-	}
-
-	#edd_checkout_form_wrap #edd_final_total_wrap #edd-purchase-button {
-		font-size: 15px;
-		margin: auto;
-		padding: 16px 0;
 	}
 }
