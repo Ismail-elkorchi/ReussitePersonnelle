@@ -6,6 +6,9 @@ define('GENESIS_LANGUAGES_URL', STYLESHEETPATH.'/languages');
 // Start the engine
 require_once(TEMPLATEPATH.'/lib/init.php');
 
+// Woocommerce Customisition
+require_once( CHILD_DIR . '/lib/woocommerce/woocommerce.php' );
+
 remove_action( 'wp_head', 'genesis_load_favicon' );
 
 //Desactivate Wordpress XML RPC

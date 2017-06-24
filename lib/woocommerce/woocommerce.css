@@ -1,0 +1,122 @@
+
+/* WooCommerce Globals
+---------------------------------------------------------------------------------------------------- */
+
+.woocommerce .col2-set .col-1,
+.woocommerce .col2-set .col-2,
+.woocommerce-page .col2-set .col-1,
+.woocommerce-page .col2-set .col-2 {
+	float: none;
+	width: 100%;
+}
+
+.woocommerce p.validate-email {
+	float: none;
+	width: 100%;
+	clear: both;
+}
+
+/* WooCommerce Checkout
+---------------------------------------------------------------------------------------------------- */
+
+.woocommerce-cart #payment ul.payment_methods li,
+.woocommerce-checkout #payment ul.payment_methods li,
+#add_payment_method #payment ul.payment_methods li {
+	list-style-type: none;
+}
+
+.woocommerce-cart table.cart td.actions .coupon input.input-text,
+.woocommerce-checkout table.cart td.actions .coupon input.input-text,
+#add_payment_method table.cart td.actions .coupon input.input-text {
+	width: auto;
+}
+
+.woocommerce-cart #payment div.form-row,
+.woocommerce-checkout #payment div.form-row,
+#add_payment_method #payment div.form-row {
+	margin-bottom: 0;
+}
+
+
+/* WooCommerce Payment
+---------------------------------------------------------------------------------------------------- */
+
+.woocommerce-cart #payment,
+.woocommerce-checkout #payment,
+#add_payment_method #payment {
+	background-color: #f5f5f5;
+	border-radius: 0;
+	padding: 10px;
+}
+
+.woocommerce-cart #payment div.payment_box,
+.woocommerce-checkout #payment div.payment_box,
+#add_payment_method #payment div.payment_box {
+	background-color: #eee;
+}
+
+.woocommerce-cart #payment div.payment_box::before,
+.woocommerce-checkout #payment div.payment_box::before,
+#add_payment_method #payment div.payment_box::before {
+	content: '';
+	display: block;
+	border: 1em solid #eee;
+	border-right-color: transparent;
+	border-left-color: transparent;
+	border-top-color: transparent;
+	position: absolute;
+	top: -0.75em;
+	left: 0;
+	margin: -1em 0 0 2em;
+}
+
+
+.woocommerce-cart #payment ul.payment_methods,
+.woocommerce-checkout #payment ul.payment_methods,
+#add_payment_method #payment ul.payment_methods {
+	border-color: #eee;
+}
+
+
+/* WooCommerce Forms
+---------------------------------------------------------------------------------------------------- */
+
+.woocommerce a.button,
+.woocommerce a.button.alt,
+.woocommerce button.button,
+.woocommerce button.button.alt,
+.woocommerce input.button,
+.woocommerce input.button.alt,
+.woocommerce input.button[type="submit"],
+.woocommerce #respond input#submit,
+.woocommerce #respond input#submit.alt {
+	background-color: #22a3d9;
+	color: #fff;
+	cursor: pointer;
+	padding: 20px 24px;
+	text-align: center;
+	text-decoration: none;
+	white-space: normal;
+}
+
+.woocommerce a.button:focus,
+.woocommerce a.button:hover,
+.woocommerce a.button.alt:focus,
+.woocommerce a.button.alt:hover,
+.woocommerce button.button:focus,
+.woocommerce button.button:hover,
+.woocommerce button.button.alt:focus,
+.woocommerce button.button.alt:hover,
+.woocommerce input.button:focus,
+.woocommerce input.button:hover,
+.woocommerce input.button.alt:focus,
+.woocommerce input.button.alt:hover,
+.woocommerce input[type="submit"]:focus,
+.woocommerce input[type="submit"]:hover,
+.woocommerce #respond input#submit:focus,
+.woocommerce #respond input#submit:hover,
+.woocommerce #respond input#submit.alt:focus,
+.woocommerce #respond input#submit.alt:hover {
+	background-color: #0078ab;
+	color: #fff;
+}
