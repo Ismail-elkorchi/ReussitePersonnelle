@@ -34,7 +34,7 @@ unregister_sidebar( 'header-right' );
 //* Add Extra Code to Primary Menu
 function reussitepersonnelle_commander() {
 	?>
-	<li class="genesis-nav-menu menu-item commander"><a onclick="javascript:__gaTracker('send', 'event', 'top-nav', 'commander');" href="https://www.reussitepersonnelle.com/commander/?edd_action=add_to_cart&download_id=3545">Commander Maintenant</a></li>';
+	<li class="genesis-nav-menu menu-item commander"><a onclick="javascript:__gaTracker('send', 'event', 'top-nav', 'commander');" href="https://www.reussitepersonnelle.com/commande/?add-to-cart=7782">Commander Maintenant</a></li>';
 	<?php
 }
 add_action('genesis_header_right','reussitepersonnelle_commander', 9, 2);
