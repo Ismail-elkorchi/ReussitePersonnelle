@@ -25,6 +25,13 @@
 	list-style-type: none;
 }
 
+.woocommerce-cart #payment ul,
+.woocommerce-checkout #payment ul,
+#add_payment_method #payment ul {
+	margin-left: 0;
+}
+
+
 .woocommerce-cart table.cart td.actions .coupon input.input-text,
 .woocommerce-checkout table.cart td.actions .coupon input.input-text,
 #add_payment_method table.cart td.actions .coupon input.input-text {
@@ -119,4 +126,31 @@
 .woocommerce #respond input#submit.alt:hover {
 	background-color: #0078ab;
 	color: #fff;
+}
+
+/* WooCommerce media queries
+---------------------------------------------------------------------------------------------------- */
+
+@media only screen and (max-width: 600px) {
+
+	.woocommerce form .form-row-first,
+	.woocommerce-page form .form-row-first,
+	.woocommerce form .form-row-last,
+	.woocommerce-page form .form-row-last {
+		float: none;
+		width: 100%;
+	}
+
+	#add_payment_method #payment div.payment_box .wc-credit-card-form-card-cvc,
+	#add_payment_method #payment div.payment_box .wc-credit-card-form-card-expiry,
+	#add_payment_method #payment div.payment_box .wc-credit-card-form-card-number,
+	.woocommerce-cart #payment div.payment_box .wc-credit-card-form-card-cvc,
+	.woocommerce-cart #payment div.payment_box .wc-credit-card-form-card-expiry,
+	.woocommerce-cart #payment div.payment_box .wc-credit-card-form-card-number,
+	.woocommerce-checkout #payment div.payment_box .wc-credit-card-form-card-cvc,
+	.woocommerce-checkout #payment div.payment_box .wc-credit-card-form-card-expiry,
+	.woocommerce-checkout #payment div.payment_box .wc-credit-card-form-card-number {
+		font-size: 18px;
+	}
+
 }
