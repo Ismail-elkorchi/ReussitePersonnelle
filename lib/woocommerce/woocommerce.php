@@ -12,7 +12,7 @@ add_action( 'wp_enqueue_scripts', 'reussitepersonnelle_dequeue_woocommerce_style
 function reussitepersonnelle_dequeue_woocommerce_styles_scripts() {
 
 	// Remove generator meta tag
-	remove_action( 'wp_head', array( $GLOBALS['woocommerce'], 'generator' ) );
+	remove_action('wp_head','wc_generator_tag');
 
 	// First check that woo exists to prevent fatal errors
 	if ( function_exists( 'is_woocommerce' ) ) {
