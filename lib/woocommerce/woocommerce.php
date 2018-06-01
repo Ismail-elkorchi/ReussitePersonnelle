@@ -109,4 +109,7 @@ if ( $WooCartOptions ) {
   update_option( 'woocommerce_enable_ajax_add_to_cart', 'no' );
 }
 
+// Show Apple Pay on checkout page
+add_filter( 'wc_stripe_show_payment_request_on_checkout', '__return_true' );
+
 ?>
