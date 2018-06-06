@@ -164,16 +164,28 @@ function reussitepersonnelle_custom_footer() {
 
 
 
+remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+remove_action ('wp_head', 'rsd_link');
+remove_action( 'wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'wp_generator');
 
-// Google Analytics custom dimenstions
-/*
-function GA_custom_author($gaq_push){
-	$author_id = $this_post->post_author;
-	$name = get_the_author_meta('display_name', $author_id);
+// Remove REST API info from head and headers
+remove_action( 'xmlrpc_rsd_apis', 'rest_output_rsd' );
+remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
+remove_action( 'template_redirect', 'rest_output_link_header', 11 );
 
-	$gaq_push = "'set', 'dimension1', $name";
-	return $gaq_push;
-}
-add_filter('yst_ga_filter_push_vars', 'GA_custom_author');
+ // Remove the REST API endpoint. REmove Oembed
+remove_action( 'rest_api_init', 'wp_oembed_register_route' );
+// Turn off oEmbed auto discovery.
+add_filter( 'embed_oembed_discover', '__return_false' );
+// Don't filter oEmbed results.
+remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
+// Remove oEmbed discovery links.
+remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+// Remove oEmbed-specific JavaScript from the front-end and back-end.
+remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+// Remove filter of the oEmbed result before any HTTP requests are made.
+remove_filter( 'pre_oembed_result', 'wp_filter_pre_oembed_result', 10 );
 
-*/
+remove_action( 'wp_head', 'feed_links', 2 );
+remove_action( 'wp_head', 'feed_links_extra', 3 );
