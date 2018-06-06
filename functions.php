@@ -10,6 +10,10 @@ require_once(TEMPLATEPATH.'/lib/init.php');
 require_once( CHILD_DIR . '/lib/woocommerce/woocommerce.php' );
 
 remove_action( 'wp_head', 'genesis_load_favicon' );
+add_action('wp_head', 'reussitepersonnelle_favicon_link');
+function reussitepersonnelle_favicon_link() {
+	echo '<link rel="shortcut icon" href="data:image/x-icon;base64,iVBORw0KGgo=" />';
+}
 
 //Desactivate Wordpress XML RPC
 add_filter('xmlrpc_enabled', '__return_false');
