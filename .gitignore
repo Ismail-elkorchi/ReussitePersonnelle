@@ -1,0 +1,12 @@
+node_modules/
+vendor/
+
+.local/
+local/.env
+
+.phpunit.result.cache
+.wp-env.json
+.wp-env.override.json
+
+*.log
+.DS_Store

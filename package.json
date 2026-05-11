@@ -1,5 +1,24 @@
 {
+	"name": "reussitepersonnelle",
+	"private": true,
+	"description": "Development workspace for the reussitepersonnelle.com block theme, site plugin, and local tooling.",
+	"scripts": {
+		"local:check": "bash tools/local/check-system-deps.sh",
+		"local:pull": "bash tools/sync/pull-production.sh",
+		"local:import": "bash tools/local/import-production.sh",
+		"local:clone": "npm run local:pull && npm run local:import",
+		"local:start": "bash tools/local/start.sh",
+		"local:stop": "bash tools/local/stop.sh",
+		"lint:php": "bash tools/local/lint-php.sh",
+		"test:smoke": "bash tools/local/smoke-test.sh",
+		"test": "npm run lint:php"
+	},
 	"stylelint": {
-		"extends": "/usr/local/lib/node_modules/stylelint-config-wordpress"
+		"extends": "@wordpress/stylelint-config"
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.57.0",
+		"@wordpress/stylelint-config": "^23.37.0",
+		"stylelint": "^16.26.0"
 	}
 }
