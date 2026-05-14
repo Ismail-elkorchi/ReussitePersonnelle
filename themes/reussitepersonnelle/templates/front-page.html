@@ -1,0 +1,160 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","className":"rp-front-page","layout":{"type":"constrained"}} -->
+<main class="wp-block-group rp-front-page">
+	<!-- wp:group {"align":"full","className":"rp-hero","layout":{"type":"constrained"}} -->
+	<div class="wp-block-group alignfull rp-hero">
+		<!-- wp:group {"align":"wide","className":"rp-hero-grid"} -->
+		<div class="wp-block-group alignwide rp-hero-grid">
+			<!-- wp:group {"layout":{"type":"constrained","justifyContent":"left"}} -->
+			<div class="wp-block-group">
+				<!-- wp:paragraph {"className":"rp-eyebrow"} -->
+				<p class="rp-eyebrow">Réussite Personnelle</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:heading {"level":1,"className":"rp-hero-title"} -->
+				<h1 class="wp-block-heading rp-hero-title">Comprendre, choisir, avancer.</h1>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"className":"rp-hero-lead"} -->
+				<p class="rp-hero-lead">Un blog de développement personnel pour travailler la confiance, les émotions, les relations et les habitudes avec réalisme, nuance et sens pratique.</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
+				<div class="wp-block-buttons" style="margin-top:var(--wp--custom--rp--space--3)">
+					<!-- wp:button -->
+					<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/blog/">Lire les articles</a></div>
+					<!-- /wp:button -->
+
+					<!-- wp:button {"className":"is-style-outline"} -->
+					<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="/a-propos/">À propos</a></div>
+					<!-- /wp:button -->
+				</div>
+				<!-- /wp:buttons -->
+			</div>
+			<!-- /wp:group -->
+
+			<!-- wp:image {"sizeSlug":"full","linkDestination":"none","className":"rp-hero-image"} -->
+			<figure class="wp-block-image size-full rp-hero-image"><img src="/wp-content/themes/reussitepersonnelle/assets/images/homepage-reflection.png" width="1400" height="980" loading="eager" decoding="async" fetchpriority="high" alt=""/></figure>
+			<!-- /wp:image -->
+		</div>
+		<!-- /wp:group -->
+
+		<!-- wp:group {"align":"wide","className":"rp-signal-grid"} -->
+		<div class="wp-block-group alignwide rp-signal-grid">
+			<!-- wp:paragraph {"className":"rp-signal"} -->
+			<p class="rp-signal"><strong>Plus lucide</strong>Mettre des mots sur ce qui bloque avant de chercher une solution rapide.</p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:paragraph {"className":"rp-signal"} -->
+			<p class="rp-signal"><strong>Plus stable</strong>Construire des habitudes, des limites et une confiance qui tiennent dans la durée.</p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:paragraph {"className":"rp-signal"} -->
+			<p class="rp-signal"><strong>Plus libre</strong>Avancer sans se laisser définir par la peur, le regard des autres ou les injonctions sociales.</p>
+			<!-- /wp:paragraph -->
+		</div>
+		<!-- /wp:group -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:reussitepersonnelle/topic-pathways /-->
+
+	<!-- wp:group {"align":"full","className":"rp-section rp-section-muted","layout":{"type":"constrained"}} -->
+	<div class="wp-block-group alignfull rp-section rp-section-muted">
+		<!-- wp:group {"align":"wide","className":"rp-section-header","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
+		<div class="wp-block-group alignwide rp-section-header">
+			<!-- wp:group {"layout":{"type":"constrained","justifyContent":"left"}} -->
+			<div class="wp-block-group">
+				<!-- wp:paragraph {"className":"rp-section-label"} -->
+				<p class="rp-section-label">À lire maintenant</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:heading -->
+				<h2 class="wp-block-heading">Derniers articles publiés</h2>
+				<!-- /wp:heading -->
+			</div>
+			<!-- /wp:group -->
+
+			<!-- wp:buttons -->
+			<div class="wp-block-buttons">
+				<!-- wp:button {"className":"is-style-outline"} -->
+				<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="/blog/">Voir tout le blog</a></div>
+				<!-- /wp:button -->
+			</div>
+			<!-- /wp:buttons -->
+		</div>
+		<!-- /wp:group -->
+
+		<!-- wp:query {"query":{"perPage":6,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":false},"align":"wide","className":"rp-latest-query","layout":{"type":"default"}} -->
+		<div class="wp-block-query alignwide rp-latest-query">
+			<!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->
+				<!-- wp:group {"tagName":"article","className":"rp-post-card","layout":{"type":"constrained"}} -->
+				<article class="wp-block-group rp-post-card">
+					<!-- wp:post-terms {"term":"category"} /-->
+					<!-- wp:post-title {"level":3,"isLink":true} /-->
+					<!-- wp:post-excerpt {"moreText":"Lire la suite","excerptLength":22} /-->
+					<!-- wp:post-date /-->
+				</article>
+				<!-- /wp:group -->
+			<!-- /wp:post-template -->
+		</div>
+		<!-- /wp:query -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"align":"full","className":"rp-section rp-philosophy","layout":{"type":"constrained"}} -->
+	<div class="wp-block-group alignfull rp-section rp-philosophy">
+		<!-- wp:columns {"align":"wide","verticalAlignment":"center"} -->
+		<div class="wp-block-columns alignwide are-vertically-aligned-center">
+			<!-- wp:column {"verticalAlignment":"center","width":"52%"} -->
+			<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:52%">
+				<!-- wp:paragraph {"className":"rp-section-label"} -->
+				<p class="rp-section-label">Notre ligne</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:heading -->
+				<h2 class="wp-block-heading">Le progrès personnel mérite mieux que les recettes toutes faites.</h2>
+				<!-- /wp:heading -->
+			</div>
+			<!-- /wp:column -->
+
+			<!-- wp:column {"verticalAlignment":"center","width":"48%"} -->
+			<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:48%">
+				<!-- wp:paragraph -->
+				<p>Réussite Personnelle défend une approche exigeante : assez concrète pour agir, assez honnête pour reconnaître la complexité d’une vie humaine.</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:list -->
+				<ul class="wp-block-list">
+					<!-- wp:list-item -->
+					<li>Pas de promesse miraculeuse.</li>
+					<!-- /wp:list-item -->
+
+					<!-- wp:list-item -->
+					<li>Des pistes utiles, à tester avec discernement.</li>
+					<!-- /wp:list-item -->
+
+					<!-- wp:list-item -->
+					<li>Une attention constante à l’équilibre, aux limites et au réel.</li>
+					<!-- /wp:list-item -->
+				</ul>
+				<!-- /wp:list -->
+
+				<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
+				<div class="wp-block-buttons" style="margin-top:var(--wp--custom--rp--space--3)">
+					<!-- wp:button {"className":"is-style-outline"} -->
+					<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="/a-propos/">Découvrir le site</a></div>
+					<!-- /wp:button -->
+				</div>
+				<!-- /wp:buttons -->
+			</div>
+			<!-- /wp:column -->
+		</div>
+		<!-- /wp:columns -->
+	</div>
+	<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

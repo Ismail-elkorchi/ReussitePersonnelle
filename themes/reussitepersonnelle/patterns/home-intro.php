@@ -7,14 +7,18 @@
  * @package ReussitePersonnelle
  */
 ?>
-<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--50)">
-	<!-- wp:heading {"level":1,"fontSize":"x-large"} -->
-	<h1 class="wp-block-heading has-x-large-font-size">Réussite Personnelle</h1>
+<!-- wp:group {"align":"wide","className":"rp-page-header","layout":{"type":"constrained","justifyContent":"left"}} -->
+<div class="wp-block-group alignwide rp-page-header">
+	<!-- wp:paragraph {"className":"rp-section-label"} -->
+	<p class="rp-section-label">Réussite Personnelle</p>
+	<!-- /wp:paragraph -->
+
+	<!-- wp:heading {"level":1} -->
+	<h1 class="wp-block-heading">Comprendre, choisir, avancer.</h1>
 	<!-- /wp:heading -->
 
-	<!-- wp:paragraph {"fontSize":"large"} -->
-	<p class="has-large-font-size">Prenez le contrôle de votre destin</p>
+	<!-- wp:paragraph {"className":"rp-page-intro"} -->
+	<p class="rp-page-intro">Des articles pour progresser avec réalisme, nuance et sens pratique.</p>
 	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->

@@ -27,6 +27,7 @@ COMPOSE=(docker compose --env-file "$ENV_FILE" -f "$ROOT_DIR/local/docker-compos
 curl -fsSI "$LOCAL_URL" >/dev/null
 "${COMPOSE[@]}" run --rm cli core version
 "${COMPOSE[@]}" run --rm cli plugin is-active reussitepersonnelle-core
+"${COMPOSE[@]}" run --rm cli eval 'foreach ( array( "reussitepersonnelle/related-posts", "reussitepersonnelle/topic-pathways", "reussitepersonnelle/topic-links", "reussitepersonnelle/footer-link-group" ) as $block ) { if ( ! WP_Block_Type_Registry::get_instance()->is_registered( $block ) ) { fwrite( STDERR, "Missing block: " . $block . PHP_EOL ); exit( 1 ); } }'
 "${COMPOSE[@]}" run --rm cli theme list --format=table
 
 printf 'Smoke tests passed for %s\n' "$LOCAL_URL"

@@ -1,8 +1,23 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
-<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
-<main class="wp-block-group">
-	<!-- wp:pattern {"slug":"reussitepersonnelle/home-intro"} /-->
+<!-- wp:group {"tagName":"main","className":"rp-page-shell rp-blog-page","layout":{"type":"constrained"}} -->
+<main class="wp-block-group rp-page-shell rp-blog-page">
+	<!-- wp:group {"className":"rp-page-header","layout":{"type":"constrained","justifyContent":"left"}} -->
+	<div class="wp-block-group rp-page-header">
+		<!-- wp:paragraph {"className":"rp-section-label"} -->
+		<p class="rp-section-label">Blog</p>
+		<!-- /wp:paragraph -->
+
+		<!-- wp:heading {"level":1} -->
+		<h1 class="wp-block-heading">Articles récents</h1>
+		<!-- /wp:heading -->
+
+		<!-- wp:paragraph {"className":"rp-page-intro"} -->
+		<p class="rp-page-intro">Des lectures pour comprendre les émotions, les relations, la confiance, les habitudes et la motivation sans perdre le contact avec le réel.</p>
+		<!-- /wp:paragraph -->
+	</div>
+	<!-- /wp:group -->
+
 	<!-- wp:pattern {"slug":"reussitepersonnelle/post-list"} /-->
 </main>
 <!-- /wp:group -->

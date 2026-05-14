@@ -1,16 +1,20 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
-<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
-<main class="wp-block-group">
-	<!-- wp:heading {"level":1} -->
-	<h1 class="wp-block-heading">Page introuvable</h1>
-	<!-- /wp:heading -->
+<!-- wp:group {"tagName":"main","className":"rp-not-found-page","layout":{"type":"constrained"}} -->
+<main class="wp-block-group rp-not-found-page">
+	<!-- wp:group {"className":"rp-page-header","layout":{"type":"constrained","justifyContent":"left"}} -->
+	<div class="wp-block-group rp-page-header">
+		<!-- wp:heading {"level":1} -->
+		<h1 class="wp-block-heading">Page introuvable</h1>
+		<!-- /wp:heading -->
 
-	<!-- wp:paragraph -->
-	<p>La page demandee n'existe pas ou a ete deplacee.</p>
-	<!-- /wp:paragraph -->
+		<!-- wp:paragraph {"className":"rp-page-intro"} -->
+		<p class="rp-page-intro">La page demandée n’existe pas ou a été déplacée. Une recherche ou le retour au blog devrait vous remettre sur un chemin utile.</p>
+		<!-- /wp:paragraph -->
+	</div>
+	<!-- /wp:group -->
 
-	<!-- wp:search {"label":"Recherche","showLabel":false,"placeholder":"Rechercher","buttonText":"Rechercher"} /-->
+	<!-- wp:search {"label":"Recherche","showLabel":false,"placeholder":"Rechercher","buttonText":"Rechercher","className":"rp-search-form"} /-->
 </main>
 <!-- /wp:group -->
 
