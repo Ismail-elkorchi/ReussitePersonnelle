@@ -326,7 +326,7 @@ Text Domain: reussitepersonnelle
 
 	.rp-search-disclosure summary {
 		position: relative;
-		display: inline-flex;
+		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: var(--rp-size-target);
@@ -350,6 +350,8 @@ Text Domain: reussitepersonnelle
 	.rp-search-disclosure summary::before,
 	.rp-search-disclosure summary::after {
 		position: absolute;
+		inset-block-start: 50%;
+		inset-inline-start: 50%;
 		display: block;
 		content: "";
 	}
@@ -359,7 +361,7 @@ Text Domain: reussitepersonnelle
 		height: var(--rp-size-search-ring);
 		border: calc(var(--rp-border-hairline) * 2) solid currentcolor;
 		border-radius: var(--rp-radius-pill);
-		transform: translate(-0.12rem, -0.12rem);
+		transform: translate(-50%, -50%);
 	}
 
 	.rp-search-disclosure summary::after {
@@ -367,7 +369,8 @@ Text Domain: reussitepersonnelle
 		height: calc(var(--rp-border-hairline) * 2);
 		border-radius: var(--rp-radius-pill);
 		background: currentcolor;
-		transform: translate(0.48rem, 0.48rem) rotate(45deg);
+		transform: translate(0.35rem, 0.35rem) rotate(45deg);
+		transform-origin: left center;
 	}
 
 	.rp-search-disclosure[open] summary,
