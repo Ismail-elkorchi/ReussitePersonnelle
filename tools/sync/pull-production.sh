@@ -56,14 +56,22 @@ rsync -az --delete \
 	"$SSH_TARGET:$REMOTE_DOCROOT/wp-content/uploads/" \
 	"$LOCAL_CONTENT_DIR/uploads/"
 
-rsync -az --delete \
-	--exclude='cache/' \
-	"$SSH_TARGET:$REMOTE_DOCROOT/wp-content/plugins/" \
-	"$LOCAL_CONTENT_DIR/plugins/"
+if [ -w "$LOCAL_CONTENT_DIR/plugins" ]; then
+	rsync -az --delete \
+		--exclude='cache/' \
+		"$SSH_TARGET:$REMOTE_DOCROOT/wp-content/plugins/" \
+		"$LOCAL_CONTENT_DIR/plugins/"
+else
+	printf 'Warning: skipping production plugin mirror because %s is not writable.\n' "$LOCAL_CONTENT_DIR/plugins" >&2
+fi
 
-rsync -az --delete \
-	"$SSH_TARGET:$REMOTE_DOCROOT/wp-content/themes/" \
-	"$LOCAL_CONTENT_DIR/themes/"
+if [ -w "$LOCAL_CONTENT_DIR/themes" ]; then
+	rsync -az --delete \
+		"$SSH_TARGET:$REMOTE_DOCROOT/wp-content/themes/" \
+		"$LOCAL_CONTENT_DIR/themes/"
+else
+	printf 'Warning: skipping production theme mirror because %s is not writable.\n' "$LOCAL_CONTENT_DIR/themes" >&2
+fi
 
 rsync -az --delete \
 	"$SSH_TARGET:$REMOTE_DOCROOT/wp-content/mu-plugins/" \
