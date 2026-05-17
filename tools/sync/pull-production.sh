@@ -18,12 +18,20 @@ REMOTE_DOCROOT="${RP_REMOTE_DOCROOT:-}"
 REMOTE_DB_DUMP_COMMAND="${RP_REMOTE_DB_DUMP_COMMAND:-}"
 
 missing=0
-for var_name in SSH_TARGET REMOTE_DOCROOT REMOTE_DB_DUMP_COMMAND; do
-	if [ -z "${!var_name}" ]; then
-		printf 'Missing required private setting: %s\n' "$var_name" >&2
-		missing=1
-	fi
-done
+if [ -z "$SSH_TARGET" ]; then
+	printf 'Missing required private setting: RP_SSH_TARGET\n' >&2
+	missing=1
+fi
+
+if [ -z "$REMOTE_DOCROOT" ]; then
+	printf 'Missing required private setting: RP_REMOTE_DOCROOT\n' >&2
+	missing=1
+fi
+
+if [ -z "$REMOTE_DB_DUMP_COMMAND" ]; then
+	printf 'Missing required private setting: RP_REMOTE_DB_DUMP_COMMAND\n' >&2
+	missing=1
+fi
 
 if [ "$missing" -ne 0 ]; then
 	cat <<'MSG' >&2
@@ -82,6 +90,7 @@ rsync -az --delete \
 	"$LOCAL_CONTENT_DIR/languages/"
 
 printf 'Dumping production database with configured remote command\n'
+# shellcheck disable=SC2029
 ssh "$SSH_TARGET" "$REMOTE_DB_DUMP_COMMAND" > "$DB_DUMP"
 
 ln -sfn "$(basename "$DB_DUMP")" "$BACKUP_DIR/latest.sql"

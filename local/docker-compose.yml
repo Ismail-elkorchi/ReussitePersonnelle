@@ -39,7 +39,6 @@ services:
       - wp-core:/var/www/html
       - ../.local/prod/wp-content/uploads:/var/www/html/wp-content/uploads
       - ../.local/prod/wp-content/plugins/akismet:/var/www/html/wp-content/plugins/akismet
-      - ../.local/prod/wp-content/plugins/ga4-analytics:/var/www/html/wp-content/plugins/ga4-analytics
       - ../.local/prod/wp-content/plugins/wordpress-seo:/var/www/html/wp-content/plugins/wordpress-seo
       - ../.local/prod/wp-content/plugins/wp-super-cache:/var/www/html/wp-content/plugins/wp-super-cache
       - ../.local/prod/wp-content/themes/genesis:/var/www/html/wp-content/themes/genesis
@@ -79,7 +78,6 @@ services:
       - wp-core:/var/www/html
       - ../.local/prod/wp-content/uploads:/var/www/html/wp-content/uploads
       - ../.local/prod/wp-content/plugins/akismet:/var/www/html/wp-content/plugins/akismet
-      - ../.local/prod/wp-content/plugins/ga4-analytics:/var/www/html/wp-content/plugins/ga4-analytics
       - ../.local/prod/wp-content/plugins/wordpress-seo:/var/www/html/wp-content/plugins/wordpress-seo
       - ../.local/prod/wp-content/plugins/wp-super-cache:/var/www/html/wp-content/plugins/wp-super-cache
       - ../.local/prod/wp-content/themes/genesis:/var/www/html/wp-content/themes/genesis
