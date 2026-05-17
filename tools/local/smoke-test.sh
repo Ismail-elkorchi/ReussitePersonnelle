@@ -37,6 +37,39 @@ if ! grep -q 'rp-topic-grid' <<<"$homepage_html" || ! grep -q 'Chemins de lectur
 	exit 1
 fi
 
+topic_card_count="$({ grep -o 'rp-topic-card' <<<"$homepage_html" || true; } | wc -l | tr -d '[:space:]')"
+if [ "$topic_card_count" -ne 7 ]; then
+	printf 'Expected 7 front page topic cards, found %s.\n' "$topic_card_count" >&2
+	exit 1
+fi
+
+for topic_slug in \
+	emotions-securite-interieure \
+	relations-limites \
+	identite-valeur-personnelle \
+	action-habitudes-changement \
+	conditions-vie-attention-energie \
+	pensee-discernement-decision \
+	sens-normes-reussite
+do
+	if ! grep -q "/category/${topic_slug}/" <<<"$homepage_html"; then
+		printf 'Front page is missing topic link: %s\n' "$topic_slug" >&2
+		exit 1
+	fi
+done
+
+for retired_category_path in \
+	category/developpement-personnel \
+	category/motivation-et-productivite \
+	category/emotions/ \
+	category/relations/
+do
+	if grep -q "$retired_category_path" <<<"$homepage_html"; then
+		printf 'Front page still links to retired category path: %s\n' "$retired_category_path" >&2
+		exit 1
+	fi
+done
+
 if ! grep -q 'rp-footer-links' <<<"$homepage_html"; then
 	printf 'Plugin-rendered footer links are missing.\n' >&2
 	exit 1

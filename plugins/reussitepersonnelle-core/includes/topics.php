@@ -40,7 +40,7 @@ function register_topic_blocks(): void {
 			'attributes'      => array(
 				'group' => array(
 					'type'    => 'string',
-					'default' => 'read',
+					'default' => 'themes',
 				),
 			),
 			'render_callback' => __NAMESPACE__ . '\\render_footer_link_group_block',
@@ -56,29 +56,39 @@ function register_topic_blocks(): void {
 function get_topics(): array {
 	$topics = array(
 		array(
-			'slug'        => 'emotions',
-			'label'       => 'Émotions',
-			'description' => 'Peur, stress, culpabilité ou jalousie : comprendre le signal avant de réagir.',
+			'slug'        => 'emotions-securite-interieure',
+			'label'       => 'Émotions et sécurité intérieure',
+			'description' => 'Peur, stress, culpabilité, anxiété : reconnaître le signal sans se laisser gouverner par lui.',
 		),
 		array(
-			'slug'        => 'relations',
-			'label'       => 'Relations',
-			'description' => 'Critique, manipulation, séduction, limites : rester soi-même sans se fermer aux autres.',
+			'slug'        => 'relations-limites',
+			'label'       => 'Relations et limites',
+			'description' => 'Amour, jalousie, manipulation, affirmation de soi : créer du lien sans s’effacer ni posséder.',
 		),
 		array(
 			'slug'        => 'identite-valeur-personnelle',
-			'label'       => 'Valeur personnelle',
-			'description' => 'Confiance, regard des autres, affirmation de soi : prendre sa place sans écraser.',
+			'label'       => 'Identité et valeur personnelle',
+			'description' => 'Confiance, estime, regard des autres : habiter sa place sans réduire sa valeur à ses réussites.',
 		),
 		array(
-			'slug'        => 'motivation-et-productivite',
-			'label'       => 'Motivation',
-			'description' => 'Habitudes, maîtrise de soi, temps, élan : agir même quand l’envie fluctue.',
+			'slug'        => 'action-habitudes-changement',
+			'label'       => 'Action, habitudes et changement',
+			'description' => 'Motivation, volonté, courage, habitudes : agir sans attendre l’élan parfait ni se brutaliser.',
 		),
 		array(
-			'slug'        => 'developpement-personnel',
-			'label'       => 'Développement personnel',
-			'description' => 'Des repères pour progresser sans promesse magique ni pression de performance.',
+			'slug'        => 'conditions-vie-attention-energie',
+			'label'       => 'Conditions de vie, attention et énergie',
+			'description' => 'Sommeil, fatigue, attention, productivité : construire des conditions qui rendent la vie plus habitable.',
+		),
+		array(
+			'slug'        => 'pensee-discernement-decision',
+			'label'       => 'Pensée, discernement et décision',
+			'description' => 'Choix, incertitude, lecture, jugement : penser plus clairement quand tout ne peut pas être garanti.',
+		),
+		array(
+			'slug'        => 'sens-normes-reussite',
+			'label'       => 'Sens, normes et réussite',
+			'description' => 'Réussite, liberté, valeurs, bonheur : avancer sans confondre transformation et conformité.',
 		),
 	);
 
@@ -107,7 +117,7 @@ function get_topic_by_slug( string $slug ): ?array {
 }
 
 /**
- * Resolve a category URL from its slug, with a stable path fallback.
+ * Resolve a category URL from its slug.
  *
  * @param string $slug Category slug.
  */
@@ -122,7 +132,28 @@ function get_topic_url( string $slug ): string {
 		}
 	}
 
-	return home_url( '/category/' . trim( $slug, '/' ) . '/' );
+	return '';
+}
+
+/**
+ * Return topics that resolve to an existing category.
+ *
+ * @return array<int, array<string, string>>
+ */
+function get_renderable_topics(): array {
+	$topics = array();
+
+	foreach ( get_topics() as $topic ) {
+		$slug = (string) ( $topic['slug'] ?? '' );
+
+		if ( '' === $slug || '' === get_topic_url( $slug ) ) {
+			continue;
+		}
+
+		$topics[] = $topic;
+	}
+
+	return $topics;
 }
 
 /**
@@ -131,7 +162,7 @@ function get_topic_url( string $slug ): string {
  * @return string
  */
 function render_topic_pathways_block(): string {
-	$topics   = get_topics();
+	$topics   = get_renderable_topics();
 	$title_id = wp_unique_id( 'rp-topic-pathways-title-' );
 
 	if ( empty( $topics ) ) {
@@ -169,7 +200,7 @@ function render_topic_pathways_block(): string {
  * @return string
  */
 function render_topic_links_block(): string {
-	$topics = get_topics();
+	$topics = get_renderable_topics();
 
 	if ( empty( $topics ) ) {
 		return '';
@@ -194,36 +225,38 @@ function render_topic_links_block(): string {
  */
 function get_footer_link_groups(): array {
 	return array(
-		'read'       => array(
-			'title' => 'Lire',
+		'themes'  => array(
+			'title' => 'Thèmes',
 			'links' => array(
 				array(
-					'label' => 'Tous les articles',
-					'url'   => home_url( '/blog/' ),
+					'topic' => 'emotions-securite-interieure',
 				),
 				array(
-					'topic' => 'developpement-personnel',
-				),
-				array(
-					'topic' => 'motivation-et-productivite',
-				),
-			),
-		),
-		'understand' => array(
-			'title' => 'Comprendre',
-			'links' => array(
-				array(
-					'topic' => 'emotions',
-				),
-				array(
-					'topic' => 'relations',
+					'topic' => 'relations-limites',
 				),
 				array(
 					'topic' => 'identite-valeur-personnelle',
 				),
 			),
 		),
-		'site'       => array(
+		'reperes' => array(
+			'title' => 'Repères',
+			'links' => array(
+				array(
+					'topic' => 'action-habitudes-changement',
+				),
+				array(
+					'topic' => 'conditions-vie-attention-energie',
+				),
+				array(
+					'topic' => 'pensee-discernement-decision',
+				),
+				array(
+					'topic' => 'sens-normes-reussite',
+				),
+			),
+		),
+		'site'    => array(
 			'title' => 'Site',
 			'links' => array(
 				array(
@@ -231,12 +264,12 @@ function get_footer_link_groups(): array {
 					'url'   => home_url( '/' ),
 				),
 				array(
-					'label' => 'À propos',
-					'url'   => home_url( '/a-propos/' ),
-				),
-				array(
 					'label' => 'Blog',
 					'url'   => home_url( '/blog/' ),
+				),
+				array(
+					'label' => 'À propos',
+					'url'   => home_url( '/a-propos/' ),
 				),
 			),
 		),
@@ -250,7 +283,7 @@ function get_footer_link_groups(): array {
  * @return string
  */
 function render_footer_link_group_block( array $attributes ): string {
-	$group_key = isset( $attributes['group'] ) ? sanitize_key( (string) $attributes['group'] ) : 'read';
+	$group_key = isset( $attributes['group'] ) ? sanitize_key( (string) $attributes['group'] ) : 'themes';
 	$groups    = get_footer_link_groups();
 
 	if ( ! isset( $groups[ $group_key ] ) ) {

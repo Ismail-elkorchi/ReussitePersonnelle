@@ -213,6 +213,10 @@ Text Domain: reussitepersonnelle
 		gap: var(--rp-space-2);
 	}
 
+	.rp-topic-grid {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
 	.rp-topic-card,
 	.rp-post-card,
 	.rp-related-card,
@@ -1018,6 +1022,10 @@ Text Domain: reussitepersonnelle
 			gap: var(--rp-space-3);
 		}
 
+		.rp-topic-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
 	@media (width <= 43.75rem) {
 
 		.rp-header {
@@ -1062,6 +1070,10 @@ Text Domain: reussitepersonnelle
 		.rp-section-header,
 		.rp-post-navigation {
 			display: grid;
+			grid-template-columns: 1fr;
+		}
+
+		.rp-topic-grid {
 			grid-template-columns: 1fr;
 		}
 
