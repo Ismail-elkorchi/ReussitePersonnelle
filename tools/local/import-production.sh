@@ -110,7 +110,8 @@ printf 'Rewriting production URLs to %s...\n' "$LOCAL_URL"
 printf 'Adjusting local-only plugin state...\n'
 "${COMPOSE[@]}" run --rm cli plugin deactivate wp-super-cache --quiet || true
 "${COMPOSE[@]}" run --rm cli plugin deactivate ga4-analytics --quiet || true
-"${COMPOSE[@]}" run --rm cli plugin activate reussitepersonnelle-core --quiet || true
+"${COMPOSE[@]}" run --rm cli plugin activate reussitepersonnelle-core --quiet
+"${COMPOSE[@]}" run --rm cli theme activate reussitepersonnelle --quiet
 "${COMPOSE[@]}" run --rm cli cache flush || true
 
 printf 'Local clone is ready at %s\n' "$LOCAL_URL"

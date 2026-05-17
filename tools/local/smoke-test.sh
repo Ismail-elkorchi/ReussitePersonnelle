@@ -30,4 +30,15 @@ curl -fsSI "$LOCAL_URL" >/dev/null
 "${COMPOSE[@]}" run --rm cli eval 'foreach ( array( "reussitepersonnelle/related-posts", "reussitepersonnelle/topic-pathways", "reussitepersonnelle/topic-links", "reussitepersonnelle/footer-link-group" ) as $block ) { if ( ! WP_Block_Type_Registry::get_instance()->is_registered( $block ) ) { fwrite( STDERR, "Missing block: " . $block . PHP_EOL ); exit( 1 ); } }'
 "${COMPOSE[@]}" run --rm cli theme list --format=table
 
+homepage_html="$(curl -fsS "$LOCAL_URL")"
+if ! grep -q 'rp-topic-grid' <<<"$homepage_html" || ! grep -q 'Chemins de lecture' <<<"$homepage_html"; then
+	printf 'Front page topic pathway section is missing.\n' >&2
+	exit 1
+fi
+
+if ! grep -q 'rp-footer-links' <<<"$homepage_html"; then
+	printf 'Plugin-rendered footer links are missing.\n' >&2
+	exit 1
+fi
+
 printf 'Smoke tests passed for %s\n' "$LOCAL_URL"
