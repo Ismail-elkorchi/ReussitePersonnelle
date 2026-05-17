@@ -47,8 +47,13 @@ if [ "$tracking_script_count" -ne 1 ]; then
 	exit 1
 fi
 
-if ! grep -q 'rp-topic-grid' <<<"$homepage_html" || ! grep -q 'Chemins de lecture' <<<"$homepage_html"; then
+if ! grep -q 'rp-topic-grid' <<<"$homepage_html" || ! grep -q 'Thèmes principaux' <<<"$homepage_html"; then
 	printf 'Front page topic pathway section is missing.\n' >&2
+	exit 1
+fi
+
+if grep -q 'Chemins de lecture' <<<"$homepage_html"; then
+	printf 'Front page still labels main categories as reading paths.\n' >&2
 	exit 1
 fi
 
@@ -58,20 +63,35 @@ if [ "$topic_card_count" -ne 7 ]; then
 	exit 1
 fi
 
-for topic_slug in \
-	emotions-securite-interieure \
-	relations-limites \
-	identite-valeur-personnelle \
-	action-habitudes-changement \
-	conditions-vie-attention-energie \
-	pensee-discernement-decision \
-	sens-normes-reussite
-do
-	if ! grep -q "/category/${topic_slug}/" <<<"$homepage_html"; then
+previous_topic_position=-1
+while IFS='|' read -r topic_slug topic_label; do
+	topic_position="$({ grep -b -o "/category/${topic_slug}/" <<<"$homepage_html" || true; } | head -n1 | cut -d: -f1)"
+
+	if [ -z "$topic_position" ]; then
 		printf 'Front page is missing topic link: %s\n' "$topic_slug" >&2
 		exit 1
 	fi
-done
+
+	if [ "$topic_position" -le "$previous_topic_position" ]; then
+		printf 'Front page topic link is out of order: %s\n' "$topic_slug" >&2
+		exit 1
+	fi
+
+	if ! grep -q "$topic_label" <<<"$homepage_html"; then
+		printf 'Front page is missing topic label: %s\n' "$topic_label" >&2
+		exit 1
+	fi
+
+	previous_topic_position="$topic_position"
+done <<'TOPICS'
+identite-valeur-personnelle|Identité et valeur personnelle
+emotions-securite-interieure|Émotions et sécurité intérieure
+relations-limites|Relations et limites
+action-habitudes-changement|Action, habitudes et changement
+pensee-discernement-decision|Pensée, discernement et décision
+conditions-vie-attention-energie|Conditions de vie, attention et énergie
+sens-normes-reussite|Sens, normes et réussite personnelle
+TOPICS
 
 for retired_category_path in \
 	category/developpement-personnel \

@@ -56,6 +56,11 @@ function register_topic_blocks(): void {
 function get_topics(): array {
 	$topics = array(
 		array(
+			'slug'        => 'identite-valeur-personnelle',
+			'label'       => 'Identité et valeur personnelle',
+			'description' => 'Confiance, estime, regard des autres : habiter sa place sans réduire sa valeur à ses réussites.',
+		),
+		array(
 			'slug'        => 'emotions-securite-interieure',
 			'label'       => 'Émotions et sécurité intérieure',
 			'description' => 'Peur, stress, culpabilité, anxiété : reconnaître le signal sans se laisser gouverner par lui.',
@@ -66,19 +71,9 @@ function get_topics(): array {
 			'description' => 'Amour, jalousie, manipulation, affirmation de soi : créer du lien sans s’effacer ni posséder.',
 		),
 		array(
-			'slug'        => 'identite-valeur-personnelle',
-			'label'       => 'Identité et valeur personnelle',
-			'description' => 'Confiance, estime, regard des autres : habiter sa place sans réduire sa valeur à ses réussites.',
-		),
-		array(
 			'slug'        => 'action-habitudes-changement',
 			'label'       => 'Action, habitudes et changement',
 			'description' => 'Motivation, volonté, courage, habitudes : agir sans attendre l’élan parfait ni se brutaliser.',
-		),
-		array(
-			'slug'        => 'conditions-vie-attention-energie',
-			'label'       => 'Conditions de vie, attention et énergie',
-			'description' => 'Sommeil, fatigue, attention, productivité : construire des conditions qui rendent la vie plus habitable.',
 		),
 		array(
 			'slug'        => 'pensee-discernement-decision',
@@ -86,8 +81,13 @@ function get_topics(): array {
 			'description' => 'Choix, incertitude, lecture, jugement : penser plus clairement quand tout ne peut pas être garanti.',
 		),
 		array(
+			'slug'        => 'conditions-vie-attention-energie',
+			'label'       => 'Conditions de vie, attention et énergie',
+			'description' => 'Sommeil, fatigue, attention, productivité : construire des conditions qui rendent la vie plus habitable.',
+		),
+		array(
 			'slug'        => 'sens-normes-reussite',
-			'label'       => 'Sens, normes et réussite',
+			'label'       => 'Sens, normes et réussite personnelle',
 			'description' => 'Réussite, liberté, valeurs, bonheur : avancer sans confondre transformation et conformité.',
 		),
 	);
@@ -174,8 +174,8 @@ function render_topic_pathways_block(): string {
 	<section class="wp-block-group alignfull rp-section is-layout-constrained wp-block-group-is-layout-constrained" aria-labelledby="<?php echo esc_attr( $title_id ); ?>">
 		<div class="wp-block-group alignwide rp-section-header">
 			<div class="wp-block-group">
-				<p class="rp-section-label">Chemins de lecture</p>
-				<h2 id="<?php echo esc_attr( $title_id ); ?>" class="wp-block-heading">Choisissez par point de départ</h2>
+				<p class="rp-section-label">Catégories</p>
+				<h2 id="<?php echo esc_attr( $title_id ); ?>" class="wp-block-heading">Thèmes principaux</h2>
 			</div>
 		</div>
 
@@ -229,13 +229,13 @@ function get_footer_link_groups(): array {
 			'title' => 'Thèmes',
 			'links' => array(
 				array(
+					'topic' => 'identite-valeur-personnelle',
+				),
+				array(
 					'topic' => 'emotions-securite-interieure',
 				),
 				array(
 					'topic' => 'relations-limites',
-				),
-				array(
-					'topic' => 'identite-valeur-personnelle',
 				),
 			),
 		),
@@ -246,10 +246,10 @@ function get_footer_link_groups(): array {
 					'topic' => 'action-habitudes-changement',
 				),
 				array(
-					'topic' => 'conditions-vie-attention-energie',
+					'topic' => 'pensee-discernement-decision',
 				),
 				array(
-					'topic' => 'pensee-discernement-decision',
+					'topic' => 'conditions-vie-attention-energie',
 				),
 				array(
 					'topic' => 'sens-normes-reussite',
