@@ -8,6 +8,9 @@ if command -v php >/dev/null 2>&1; then
 	exit 0
 fi
 
+source "$ROOT_DIR/tools/local/docker-access.sh"
+rp_reexec_with_docker_group_if_needed "$ROOT_DIR/tools/local/lint-php.sh" "$@"
+
 if command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1; then
 	if [ ! -f "$ROOT_DIR/local/.env" ]; then
 		cp "$ROOT_DIR/local/.env.example" "$ROOT_DIR/local/.env"

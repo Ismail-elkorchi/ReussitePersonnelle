@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2016
 set -euo pipefail
 
 missing=0
 missing_packages=0
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+
+source "$ROOT_DIR/tools/local/docker-access.sh"
+rp_reexec_with_docker_group_if_needed "$ROOT_DIR/tools/local/check-system-deps.sh" "$@"
 
 check() {
 	local command_name="$1"

@@ -18,12 +18,20 @@ REMOTE_DOCROOT="${RP_REMOTE_DOCROOT:-}"
 REMOTE_DB_DUMP_COMMAND="${RP_REMOTE_DB_DUMP_COMMAND:-}"
 
 missing=0
-for var_name in SSH_TARGET REMOTE_DOCROOT REMOTE_DB_DUMP_COMMAND; do
-	if [ -z "${!var_name}" ]; then
-		printf 'Missing required private setting: %s\n' "$var_name" >&2
-		missing=1
-	fi
-done
+if [ -z "$SSH_TARGET" ]; then
+	printf 'Missing required private setting: RP_SSH_TARGET\n' >&2
+	missing=1
+fi
+
+if [ -z "$REMOTE_DOCROOT" ]; then
+	printf 'Missing required private setting: RP_REMOTE_DOCROOT\n' >&2
+	missing=1
+fi
+
+if [ -z "$REMOTE_DB_DUMP_COMMAND" ]; then
+	printf 'Missing required private setting: RP_REMOTE_DB_DUMP_COMMAND\n' >&2
+	missing=1
+fi
 
 if [ "$missing" -ne 0 ]; then
 	cat <<'MSG' >&2
@@ -56,14 +64,22 @@ rsync -az --delete \
 	"$SSH_TARGET:$REMOTE_DOCROOT/wp-content/uploads/" \
 	"$LOCAL_CONTENT_DIR/uploads/"
 
-rsync -az --delete \
-	--exclude='cache/' \
-	"$SSH_TARGET:$REMOTE_DOCROOT/wp-content/plugins/" \
-	"$LOCAL_CONTENT_DIR/plugins/"
+if [ -w "$LOCAL_CONTENT_DIR/plugins" ]; then
+	rsync -az --delete \
+		--exclude='cache/' \
+		"$SSH_TARGET:$REMOTE_DOCROOT/wp-content/plugins/" \
+		"$LOCAL_CONTENT_DIR/plugins/"
+else
+	printf 'Warning: skipping production plugin mirror because %s is not writable.\n' "$LOCAL_CONTENT_DIR/plugins" >&2
+fi
 
-rsync -az --delete \
-	"$SSH_TARGET:$REMOTE_DOCROOT/wp-content/themes/" \
-	"$LOCAL_CONTENT_DIR/themes/"
+if [ -w "$LOCAL_CONTENT_DIR/themes" ]; then
+	rsync -az --delete \
+		"$SSH_TARGET:$REMOTE_DOCROOT/wp-content/themes/" \
+		"$LOCAL_CONTENT_DIR/themes/"
+else
+	printf 'Warning: skipping production theme mirror because %s is not writable.\n' "$LOCAL_CONTENT_DIR/themes" >&2
+fi
 
 rsync -az --delete \
 	"$SSH_TARGET:$REMOTE_DOCROOT/wp-content/mu-plugins/" \
@@ -74,6 +90,7 @@ rsync -az --delete \
 	"$LOCAL_CONTENT_DIR/languages/"
 
 printf 'Dumping production database with configured remote command\n'
+# shellcheck disable=SC2029
 ssh "$SSH_TARGET" "$REMOTE_DB_DUMP_COMMAND" > "$DB_DUMP"
 
 ln -sfn "$(basename "$DB_DUMP")" "$BACKUP_DIR/latest.sql"

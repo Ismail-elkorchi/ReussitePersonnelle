@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2016
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
@@ -6,6 +7,9 @@ ENV_FILE="$ROOT_DIR/local/.env"
 ENV_EXAMPLE="$ROOT_DIR/local/.env.example"
 COMPOSE_FILE="$ROOT_DIR/local/docker-compose.yml"
 DUMP_PATH="${1:-$ROOT_DIR/.local/backups/latest.sql}"
+
+source "$ROOT_DIR/tools/local/docker-access.sh"
+rp_reexec_with_docker_group_if_needed "$ROOT_DIR/tools/local/import-production.sh" "$@"
 
 if [ ! -f "$ENV_FILE" ]; then
 	cp "$ENV_EXAMPLE" "$ENV_FILE"
@@ -50,7 +54,7 @@ export LOCAL_TABLE_PREFIX
 COMPOSE=(docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE")
 
 printf 'Starting local WordPress services...\n'
-"${COMPOSE[@]}" up -d db wordpress
+"${COMPOSE[@]}" up -d --force-recreate db wordpress
 
 printf 'Waiting for MariaDB...\n'
 db_ready=0
@@ -96,11 +100,6 @@ SQL
 printf 'Importing %s...\n' "$DUMP_PATH"
 "${COMPOSE[@]}" exec -T db mariadb -u"$LOCAL_DB_USER" "-p${LOCAL_DB_PASSWORD}" "$LOCAL_DB_NAME" < "$DUMP_PATH"
 
-printf 'Refreshing local Yoast SEO package...\n'
-if ! "${COMPOSE[@]}" run --rm --user root cli --skip-plugins=wordpress-seo plugin install wordpress-seo --version=27.5 --force --quiet; then
-	printf 'Warning: could not refresh Yoast SEO locally; continuing with copied production files.\n' >&2
-fi
-
 printf 'Rewriting production URLs to %s...\n' "$LOCAL_URL"
 "${COMPOSE[@]}" run --rm cli search-replace "$PRODUCTION_URL" "$LOCAL_URL" --all-tables-with-prefix --skip-columns=guid --report-changed-only
 "${COMPOSE[@]}" run --rm cli search-replace "https://www.reussitepersonnelle.com" "$LOCAL_URL" --all-tables-with-prefix --skip-columns=guid --report-changed-only
@@ -109,8 +108,9 @@ printf 'Rewriting production URLs to %s...\n' "$LOCAL_URL"
 
 printf 'Adjusting local-only plugin state...\n'
 "${COMPOSE[@]}" run --rm cli plugin deactivate wp-super-cache --quiet || true
-"${COMPOSE[@]}" run --rm cli plugin deactivate ga4-analytics --quiet || true
-"${COMPOSE[@]}" run --rm cli plugin activate reussitepersonnelle-core --quiet || true
+"${COMPOSE[@]}" run --rm cli eval 'if ( ! file_exists( WP_PLUGIN_DIR . "/reussitepersonnelle-core/reussitepersonnelle-core.php" ) ) { fwrite( STDERR, "Tracked plugin file is not mounted at wp-content/plugins/reussitepersonnelle-core/reussitepersonnelle-core.php" . PHP_EOL ); exit( 1 ); }'
+"${COMPOSE[@]}" run --rm cli plugin activate reussitepersonnelle-core --quiet
+"${COMPOSE[@]}" run --rm cli theme activate reussitepersonnelle --quiet
 "${COMPOSE[@]}" run --rm cli cache flush || true
 
 printf 'Local clone is ready at %s\n' "$LOCAL_URL"

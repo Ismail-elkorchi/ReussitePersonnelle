@@ -19,6 +19,8 @@ After adding your user to the `docker` group, log out and back in, or run:
 newgrp docker
 ```
 
+The repository npm scripts also detect this stale-session state and re-run themselves through the `docker` group when possible. A plain command such as `docker ps` still needs a refreshed shell.
+
 Then verify:
 
 ```bash
@@ -56,7 +58,7 @@ http://localhost:8080
 phpMyAdmin is available only when the `tools` profile is enabled:
 
 ```bash
-docker compose --env-file local/.env -f local/docker-compose.yml --profile tools up -d phpmyadmin
+sg docker -c 'docker compose --env-file local/.env -f local/docker-compose.yml --profile tools up -d phpmyadmin'
 ```
 
 Then open:

@@ -21,3 +21,5 @@ define( 'REUSSITEPERSONNELLE_CORE_FILE', __FILE__ );
 define( 'REUSSITEPERSONNELLE_CORE_DIR', plugin_dir_path( __FILE__ ) );
 
 require_once REUSSITEPERSONNELLE_CORE_DIR . 'includes/tracking.php';
+require_once REUSSITEPERSONNELLE_CORE_DIR . 'includes/topics.php';
+require_once REUSSITEPERSONNELLE_CORE_DIR . 'includes/related-posts.php';

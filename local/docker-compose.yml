@@ -38,8 +38,13 @@ services:
     volumes:
       - wp-core:/var/www/html
       - ../.local/prod/wp-content/uploads:/var/www/html/wp-content/uploads
-      - ../.local/prod/wp-content/plugins:/var/www/html/wp-content/plugins
-      - ../.local/prod/wp-content/themes:/var/www/html/wp-content/themes
+      - ../.local/prod/wp-content/plugins/akismet:/var/www/html/wp-content/plugins/akismet
+      - ../.local/prod/wp-content/plugins/wordpress-seo:/var/www/html/wp-content/plugins/wordpress-seo
+      - ../.local/prod/wp-content/plugins/wp-super-cache:/var/www/html/wp-content/plugins/wp-super-cache
+      - ../.local/prod/wp-content/themes/genesis:/var/www/html/wp-content/themes/genesis
+      - ../.local/prod/wp-content/themes/twentytwentyfive:/var/www/html/wp-content/themes/twentytwentyfive
+      - ../.local/prod/wp-content/themes/twentytwentyfour:/var/www/html/wp-content/themes/twentytwentyfour
+      - ../.local/prod/wp-content/themes/twentytwentythree:/var/www/html/wp-content/themes/twentytwentythree
       - ../.local/prod/wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
       - ../.local/prod/wp-content/languages:/var/www/html/wp-content/languages
       - ../themes/reussitepersonnelle:/var/www/html/wp-content/themes/reussitepersonnelle
@@ -72,8 +77,13 @@ services:
     volumes:
       - wp-core:/var/www/html
       - ../.local/prod/wp-content/uploads:/var/www/html/wp-content/uploads
-      - ../.local/prod/wp-content/plugins:/var/www/html/wp-content/plugins
-      - ../.local/prod/wp-content/themes:/var/www/html/wp-content/themes
+      - ../.local/prod/wp-content/plugins/akismet:/var/www/html/wp-content/plugins/akismet
+      - ../.local/prod/wp-content/plugins/wordpress-seo:/var/www/html/wp-content/plugins/wordpress-seo
+      - ../.local/prod/wp-content/plugins/wp-super-cache:/var/www/html/wp-content/plugins/wp-super-cache
+      - ../.local/prod/wp-content/themes/genesis:/var/www/html/wp-content/themes/genesis
+      - ../.local/prod/wp-content/themes/twentytwentyfive:/var/www/html/wp-content/themes/twentytwentyfive
+      - ../.local/prod/wp-content/themes/twentytwentyfour:/var/www/html/wp-content/themes/twentytwentyfour
+      - ../.local/prod/wp-content/themes/twentytwentythree:/var/www/html/wp-content/themes/twentytwentythree
       - ../.local/prod/wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
       - ../.local/prod/wp-content/languages:/var/www/html/wp-content/languages
       - ../themes/reussitepersonnelle:/var/www/html/wp-content/themes/reussitepersonnelle

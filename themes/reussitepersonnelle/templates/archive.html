@@ -1,9 +1,18 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
-<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
-<main class="wp-block-group">
-	<!-- wp:query-title {"type":"archive"} /-->
-	<!-- wp:term-description /-->
+<!-- wp:group {"tagName":"main","className":"rp-archive-page","layout":{"type":"constrained"}} -->
+<main class="wp-block-group rp-archive-page">
+	<!-- wp:group {"className":"rp-archive-hero","layout":{"type":"constrained","justifyContent":"left"}} -->
+	<div class="wp-block-group rp-archive-hero">
+		<!-- wp:paragraph {"className":"rp-section-label"} -->
+		<p class="rp-section-label">Archives</p>
+		<!-- /wp:paragraph -->
+
+		<!-- wp:query-title {"type":"archive"} /-->
+		<!-- wp:term-description /-->
+	</div>
+	<!-- /wp:group -->
+
 	<!-- wp:pattern {"slug":"reussitepersonnelle/post-list"} /-->
 </main>
 <!-- /wp:group -->

@@ -1,11 +1,84 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
-<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
-<main class="wp-block-group">
-	<!-- wp:post-title {"level":1} /-->
-	<!-- wp:post-date /-->
-	<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
-	<!-- wp:post-terms {"term":"category"} /-->
+<!-- wp:group {"tagName":"main","className":"rp-article-page","layout":{"type":"constrained"}} -->
+<main class="wp-block-group rp-article-page">
+	<!-- wp:group {"className":"rp-article-header","layout":{"type":"constrained","justifyContent":"left"}} -->
+	<div class="wp-block-group rp-article-header">
+		<!-- wp:post-terms {"term":"category","className":"rp-article-kicker"} /-->
+		<!-- wp:post-title {"level":1,"className":"rp-article-title"} /-->
+
+		<!-- wp:group {"className":"rp-article-meta","layout":{"type":"flex","flexWrap":"wrap"}} -->
+		<div class="wp-block-group rp-article-meta">
+			<!-- wp:group {"className":"rp-meta-item","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+			<div class="wp-block-group rp-meta-item">
+				<!-- wp:paragraph {"className":"rp-meta-label"} -->
+				<p class="rp-meta-label">Par</p>
+				<!-- /wp:paragraph -->
+				<!-- wp:post-author-name {"className":"rp-author-name"} /-->
+			</div>
+			<!-- /wp:group -->
+
+			<!-- wp:group {"className":"rp-meta-item","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+			<div class="wp-block-group rp-meta-item">
+				<!-- wp:paragraph {"className":"rp-meta-label"} -->
+				<p class="rp-meta-label">Publié le</p>
+				<!-- /wp:paragraph -->
+				<!-- wp:post-date {"className":"rp-published-date"} /-->
+			</div>
+			<!-- /wp:group -->
+
+			<!-- wp:group {"className":"rp-meta-item","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+			<div class="wp-block-group rp-meta-item">
+				<!-- wp:paragraph {"className":"rp-meta-label"} -->
+				<p class="rp-meta-label">Mis à jour le</p>
+				<!-- /wp:paragraph -->
+				<!-- wp:post-date {"displayType":"modified","className":"rp-updated-date"} /-->
+			</div>
+			<!-- /wp:group -->
+
+			<!-- wp:group {"className":"rp-meta-item","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+			<div class="wp-block-group rp-meta-item">
+				<!-- wp:paragraph {"className":"rp-meta-label"} -->
+				<p class="rp-meta-label">Lecture</p>
+				<!-- /wp:paragraph -->
+				<!-- wp:post-time-to-read {"displayAsRange":false,"className":"rp-reading-time"} /-->
+			</div>
+			<!-- /wp:group -->
+		</div>
+		<!-- /wp:group -->
+
+		<!-- wp:paragraph {"className":"rp-editorial-note"} -->
+		<p class="rp-editorial-note">Une lecture à aborder comme un repère de réflexion : observez ce qui résonne, gardez ce qui vous aide, et adaptez toujours les pistes à votre situation.</p>
+		<!-- /wp:paragraph -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:post-content {"className":"rp-article-content","layout":{"type":"constrained"}} /-->
+
+	<!-- wp:group {"className":"rp-article-after","layout":{"type":"constrained","justifyContent":"left"}} -->
+	<div class="wp-block-group rp-article-after">
+		<!-- wp:separator -->
+		<hr class="wp-block-separator has-alpha-channel-opacity"/>
+		<!-- /wp:separator -->
+
+		<!-- wp:group {"className":"rp-post-navigation","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
+		<div class="wp-block-group rp-post-navigation">
+			<!-- wp:post-navigation-link {"type":"previous","label":"Article précédent","showTitle":true,"linkLabel":true} /-->
+			<!-- wp:post-navigation-link {"type":"next","label":"Article suivant","showTitle":true,"linkLabel":true} /-->
+		</div>
+		<!-- /wp:group -->
+
+		<!-- wp:reussitepersonnelle/related-posts /-->
+
+		<!-- wp:buttons {"className":"rp-article-return"} -->
+		<div class="wp-block-buttons rp-article-return">
+			<!-- wp:button {"className":"is-style-outline"} -->
+			<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="/blog/">Retour au blog</a></div>
+			<!-- /wp:button -->
+		</div>
+		<!-- /wp:buttons -->
+	</div>
+	<!-- /wp:group -->
 </main>
 <!-- /wp:group -->
 
