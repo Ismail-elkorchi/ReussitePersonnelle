@@ -50,7 +50,7 @@ export LOCAL_TABLE_PREFIX
 COMPOSE=(docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE")
 
 printf 'Starting local WordPress services...\n'
-"${COMPOSE[@]}" up -d db wordpress
+"${COMPOSE[@]}" up -d --force-recreate db wordpress
 
 printf 'Waiting for MariaDB...\n'
 db_ready=0
@@ -110,6 +110,7 @@ printf 'Rewriting production URLs to %s...\n' "$LOCAL_URL"
 printf 'Adjusting local-only plugin state...\n'
 "${COMPOSE[@]}" run --rm cli plugin deactivate wp-super-cache --quiet || true
 "${COMPOSE[@]}" run --rm cli plugin deactivate ga4-analytics --quiet || true
+"${COMPOSE[@]}" run --rm cli eval 'if ( ! file_exists( WP_PLUGIN_DIR . "/reussitepersonnelle-core/reussitepersonnelle-core.php" ) ) { fwrite( STDERR, "Tracked plugin file is not mounted at wp-content/plugins/reussitepersonnelle-core/reussitepersonnelle-core.php" . PHP_EOL ); exit( 1 ); }'
 "${COMPOSE[@]}" run --rm cli plugin activate reussitepersonnelle-core --quiet
 "${COMPOSE[@]}" run --rm cli theme activate reussitepersonnelle --quiet
 "${COMPOSE[@]}" run --rm cli cache flush || true

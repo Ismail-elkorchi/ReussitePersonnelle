@@ -23,9 +23,10 @@ fi
 
 COMPOSE=(docker compose --env-file "$ENV_FILE" -f "$ROOT_DIR/local/docker-compose.yml")
 
-"${COMPOSE[@]}" up -d db wordpress
+"${COMPOSE[@]}" up -d --force-recreate db wordpress
 curl -fsSI "$LOCAL_URL" >/dev/null
 "${COMPOSE[@]}" run --rm cli core version
+"${COMPOSE[@]}" run --rm cli eval 'if ( ! file_exists( WP_PLUGIN_DIR . "/reussitepersonnelle-core/reussitepersonnelle-core.php" ) ) { fwrite( STDERR, "Tracked plugin file is not mounted at wp-content/plugins/reussitepersonnelle-core/reussitepersonnelle-core.php" . PHP_EOL ); exit( 1 ); }'
 "${COMPOSE[@]}" run --rm cli plugin is-active reussitepersonnelle-core
 "${COMPOSE[@]}" run --rm cli eval 'foreach ( array( "reussitepersonnelle/related-posts", "reussitepersonnelle/topic-pathways", "reussitepersonnelle/topic-links", "reussitepersonnelle/footer-link-group" ) as $block ) { if ( ! WP_Block_Type_Registry::get_instance()->is_registered( $block ) ) { fwrite( STDERR, "Missing block: " . $block . PHP_EOL ); exit( 1 ); } }'
 "${COMPOSE[@]}" run --rm cli theme list --format=table
