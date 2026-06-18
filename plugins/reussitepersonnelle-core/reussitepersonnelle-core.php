@@ -4,7 +4,7 @@
  * Plugin URI: https://reussitepersonnelle.com
  * Description: Site-specific functionality for reussitepersonnelle.com.
  * Version: 0.1.0
- * Requires at least: 6.9
+ * Requires at least: 7.0
  * Requires PHP: 8.4
  * Author: Ismail El Korchi
  * Text Domain: reussitepersonnelle-core
@@ -22,4 +22,5 @@ define( 'REUSSITEPERSONNELLE_CORE_DIR', plugin_dir_path( __FILE__ ) );
 
 require_once REUSSITEPERSONNELLE_CORE_DIR . 'includes/tracking.php';
 require_once REUSSITEPERSONNELLE_CORE_DIR . 'includes/topics.php';
+require_once REUSSITEPERSONNELLE_CORE_DIR . 'includes/breadcrumbs.php';
 require_once REUSSITEPERSONNELLE_CORE_DIR . 'includes/related-posts.php';

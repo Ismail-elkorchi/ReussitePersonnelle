@@ -21,7 +21,15 @@ function register_topic_blocks(): void {
 		'reussitepersonnelle/topic-pathways',
 		array(
 			'api_version'     => 3,
+			'title'           => __( 'Topic pathways', 'reussitepersonnelle-core' ),
+			'description'     => __( 'Displays the curated main topic cards for the homepage.', 'reussitepersonnelle-core' ),
+			'category'        => 'theme',
+			'icon'            => 'index-card',
 			'render_callback' => __NAMESPACE__ . '\\render_topic_pathways_block',
+			'supports'        => array(
+				'autoRegister' => true,
+				'html'         => false,
+			),
 		)
 	);
 
@@ -29,7 +37,15 @@ function register_topic_blocks(): void {
 		'reussitepersonnelle/topic-links',
 		array(
 			'api_version'     => 3,
+			'title'           => __( 'Topic links', 'reussitepersonnelle-core' ),
+			'description'     => __( 'Displays a compact list of curated topic links.', 'reussitepersonnelle-core' ),
+			'category'        => 'theme',
+			'icon'            => 'category',
 			'render_callback' => __NAMESPACE__ . '\\render_topic_links_block',
+			'supports'        => array(
+				'autoRegister' => true,
+				'html'         => false,
+			),
 		)
 	);
 
@@ -37,13 +53,23 @@ function register_topic_blocks(): void {
 		'reussitepersonnelle/footer-link-group',
 		array(
 			'api_version'     => 3,
+			'title'           => __( 'Footer link group', 'reussitepersonnelle-core' ),
+			'description'     => __( 'Displays one curated footer navigation group.', 'reussitepersonnelle-core' ),
+			'category'        => 'theme',
+			'icon'            => 'editor-ul',
 			'attributes'      => array(
 				'group' => array(
+					'label'   => __( 'Footer group', 'reussitepersonnelle-core' ),
 					'type'    => 'string',
+					'enum'    => array( 'themes', 'reperes', 'site' ),
 					'default' => 'themes',
 				),
 			),
 			'render_callback' => __NAMESPACE__ . '\\render_footer_link_group_block',
+			'supports'        => array(
+				'autoRegister' => true,
+				'html'         => false,
+			),
 		)
 	);
 }

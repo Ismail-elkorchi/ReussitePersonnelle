@@ -52,6 +52,7 @@ fi
 export LOCAL_TABLE_PREFIX
 
 COMPOSE=(docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE")
+source "$ROOT_DIR/tools/local/wordpress-core.sh"
 
 printf 'Starting local WordPress services...\n'
 "${COMPOSE[@]}" up -d --force-recreate db wordpress
@@ -72,19 +73,7 @@ if [ "$db_ready" -ne 1 ]; then
 fi
 
 printf 'Waiting for WordPress core files...\n'
-wp_ready=0
-for _ in $(seq 1 60); do
-	if "${COMPOSE[@]}" run --rm cli core version >/dev/null 2>&1; then
-		wp_ready=1
-		break
-	fi
-	sleep 2
-done
-
-if [ "$wp_ready" -ne 1 ]; then
-	printf 'WordPress core files were not ready in time.\n' >&2
-	exit 1
-fi
+rp_ensure_wordpress_core_version
 
 printf 'Setting local WordPress table prefix to %s...\n' "$LOCAL_TABLE_PREFIX"
 "${COMPOSE[@]}" run --rm --user root cli config set table_prefix "$LOCAL_TABLE_PREFIX" --type=variable --quiet

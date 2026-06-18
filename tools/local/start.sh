@@ -17,22 +17,11 @@ source "$ENV_FILE"
 set +a
 
 COMPOSE=(docker compose --env-file "$ENV_FILE" -f "$ROOT_DIR/local/docker-compose.yml")
+source "$ROOT_DIR/tools/local/wordpress-core.sh"
 
 "${COMPOSE[@]}" up -d --force-recreate db wordpress
 
-wp_ready=0
-for _ in $(seq 1 60); do
-	if "${COMPOSE[@]}" run --rm cli core version >/dev/null 2>&1; then
-		wp_ready=1
-		break
-	fi
-	sleep 2
-done
-
-if [ "$wp_ready" -ne 1 ]; then
-	printf 'WordPress core files were not ready in time.\n' >&2
-	exit 1
-fi
+rp_ensure_wordpress_core_version
 
 "${COMPOSE[@]}" run --rm cli eval 'if ( ! file_exists( WP_PLUGIN_DIR . "/reussitepersonnelle-core/reussitepersonnelle-core.php" ) ) { fwrite( STDERR, "Tracked plugin file is not mounted at wp-content/plugins/reussitepersonnelle-core/reussitepersonnelle-core.php" . PHP_EOL ); exit( 1 ); }'
 "${COMPOSE[@]}" run --rm cli plugin activate reussitepersonnelle-core --quiet

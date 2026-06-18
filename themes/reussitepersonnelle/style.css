@@ -4,8 +4,8 @@ Theme URI: https://reussitepersonnelle.com
 Author: Ismail El Korchi
 Description: Block theme for reussitepersonnelle.com.
 Version: 0.1.0
-Requires at least: 6.9
-Tested up to: 6.9
+Requires at least: 7.0
+Tested up to: 7.0
 Requires PHP: 8.4
 Text Domain: reussitepersonnelle
 */
@@ -254,6 +254,27 @@ Text Domain: reussitepersonnelle
 		line-height: var(--rp-line-lead);
 	}
 
+	.rp-breadcrumbs {
+		max-width: var(--rp-measure-archive-header);
+		margin-block: 0 var(--rp-space-3);
+		color: var(--rp-color-text-muted);
+		font-size: var(--rp-type-xs);
+		font-weight: var(--rp-weight-bold);
+		line-height: var(--rp-line-compact);
+	}
+
+	.rp-breadcrumbs :where(a) {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.rp-breadcrumbs :where(a:hover) {
+		color: var(--rp-color-accent-primary);
+		text-decoration: underline;
+		text-decoration-thickness: 0.08em;
+		text-underline-offset: 0.22em;
+	}
+
 /* Components */
 
 	.rp-header {
@@ -454,44 +475,112 @@ Text Domain: reussitepersonnelle
 	}
 
 	.rp-header [class~="wp-block-navigation__responsive-container"].is-menu-open [class~="wp-block-navigation__responsive-container-content"] {
-		align-items: stretch;
-		max-width: var(--rp-measure-nav-overlay);
-		margin-inline: auto;
-		padding: var(--rp-space-5) var(--rp-space-3);
+		width: 100%;
+		padding: 0;
 	}
 
-	.rp-header [class~="wp-block-navigation__responsive-container"].is-menu-open [class~="wp-block-navigation__container"] {
+	.rp-navigation-overlay {
+		display: grid;
+		align-content: start;
+		min-height: 100svh;
+		padding-block: var(--rp-space-5);
+		padding-inline: var(--rp-space-3);
+		background:
+			linear-gradient(180deg, var(--rp-color-surface-base) 0%, var(--rp-color-surface-muted) 100%);
+		color: var(--rp-color-text-primary);
+	}
+
+	.rp-navigation-overlay > * {
+		width: min(100%, var(--rp-measure-nav-overlay));
+		margin-inline: auto;
+	}
+
+	.rp-navigation-overlay-bar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--rp-space-2);
+		padding-block-end: var(--rp-space-2);
+		border-block-end: var(--rp-border-hairline) solid var(--rp-color-border-subtle);
+	}
+
+	.rp-navigation-overlay-title {
+		margin-block: var(--rp-space-4) 0;
+		font-family: var(--rp-font-serif);
+		font-size: var(--rp-type-heading-small);
+		line-height: var(--rp-line-heading);
+	}
+
+	.rp-navigation-overlay-title :where(a) {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.rp-navigation-overlay-intro {
+		max-width: var(--rp-measure-readable);
+		margin-block: var(--rp-space-2) var(--rp-space-4);
+		color: var(--rp-color-text-muted);
+		font-size: var(--rp-type-base);
+		line-height: var(--rp-line-lead);
+	}
+
+	.rp-navigation-overlay-close {
+		margin-inline-start: auto;
+	}
+
+	.rp-navigation-overlay-close :where(button) {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: var(--rp-size-target);
+		min-height: var(--rp-size-target);
+		border: var(--rp-border-hairline) solid var(--rp-color-border-subtle);
+		border-radius: var(--rp-radius-pill);
+		background: var(--rp-color-surface-base);
+		color: var(--rp-color-text-primary);
+		cursor: pointer;
+	}
+
+	.rp-navigation-overlay-close :where(button:hover) {
+		border-color: var(--rp-color-accent-primary);
+		background: var(--rp-color-surface-muted);
+		color: var(--rp-color-accent-primary);
+	}
+
+	.rp-overlay-nav {
+		width: 100%;
+		margin-block: var(--rp-space-4) 0;
+	}
+
+	.rp-overlay-nav [class~="wp-block-navigation__container"] {
 		align-items: stretch;
 		width: 100%;
 		gap: 0;
 	}
 
-	.rp-header [class~="wp-block-navigation__responsive-container"].is-menu-open .wp-block-navigation-item {
+	.rp-overlay-nav .wp-block-navigation-item {
 		width: 100%;
 	}
 
-	.rp-header [class~="wp-block-navigation__responsive-container"].is-menu-open :where(a) {
+	.rp-overlay-nav :where(a) {
 		justify-content: flex-start;
 		width: 100%;
 		padding: 0.95rem 0;
-		border-bottom: var(--rp-border-hairline) solid var(--rp-color-border-subtle);
+		border-block-end: var(--rp-border-hairline) solid var(--rp-color-border-subtle);
+		color: var(--rp-color-text-primary);
+		font-family: var(--rp-font-serif);
 		font-size: var(--rp-type-card-title);
-		line-height: var(--rp-line-card);
-	}
-
-	.rp-header [class~="wp-block-navigation__responsive-container"].is-menu-open .wp-block-navigation-submenu ul {
-		position: static;
-		width: 100%;
-		min-width: 0;
-		padding: 0 0 0 var(--rp-space-3);
-		border: 0;
-		background: transparent;
-	}
-
-	.rp-header [class~="wp-block-navigation__responsive-container"].is-menu-open .wp-block-navigation-submenu ul :where(a) {
-		font-family: var(--rp-font-sans);
-		font-size: var(--rp-type-base);
 		font-weight: var(--rp-weight-bold);
+		line-height: var(--rp-line-card);
+		text-decoration: none;
+	}
+
+	.rp-overlay-nav :where(a:hover) {
+		color: var(--rp-color-accent-primary);
+	}
+
+	.rp-overlay-search {
+		margin-block-start: var(--rp-space-4);
 	}
 
 	.rp-footer {
@@ -711,8 +800,6 @@ Text Domain: reussitepersonnelle
 	.wp-block-button a,
 	.wp-element-button {
 		border-radius: var(--rp-radius-pill);
-		background: var(--rp-color-text-primary);
-		color: var(--rp-color-text-inverse);
 		font-size: var(--rp-type-sm);
 		font-weight: var(--rp-weight-heavy);
 		text-decoration: none;
@@ -723,9 +810,7 @@ Text Domain: reussitepersonnelle
 	}
 
 	.is-style-outline a {
-		background: transparent;
 		border-color: currentcolor;
-		color: var(--rp-color-text-primary);
 	}
 
 	.rp-philosophy .is-style-outline a {
@@ -763,17 +848,19 @@ Text Domain: reussitepersonnelle
 		border-color: var(--rp-color-accent-primary);
 	}
 
-	.wp-block-button a:hover,
-	.wp-block-button a:focus-visible {
-		background: var(--rp-color-accent-primary);
-		color: var(--rp-color-text-inverse);
+	.rp-navigation-overlay .rp-topic-links {
+		display: grid;
+		gap: calc(var(--rp-space-1) / 2);
+		margin-block-start: var(--rp-space-4);
 	}
 
-	.is-style-outline a:hover,
-	.is-style-outline a:focus-visible {
-		background: var(--rp-color-accent-primary);
-		border-color: var(--rp-color-accent-primary);
-		color: var(--rp-color-text-inverse);
+	.rp-navigation-overlay .rp-topic-links a {
+		display: flex;
+		width: 100%;
+		padding: 0.75rem 0.9rem;
+		border-radius: var(--rp-radius-base);
+		background: var(--rp-color-surface-translucent);
+		line-height: var(--rp-line-compact);
 	}
 
 /* Templates */
@@ -1056,10 +1143,6 @@ Text Domain: reussitepersonnelle
 			width: auto;
 		}
 
-		.rp-header [class~="wp-block-navigation__responsive-container"].is-menu-open [class~="wp-block-navigation__responsive-container-content"] {
-			padding-block-start: var(--rp-space-5);
-		}
-
 		.rp-section,
 		.rp-page-shell,
 		.rp-archive-page,
@@ -1096,6 +1179,11 @@ Text Domain: reussitepersonnelle
 		.wp-block-post-content {
 			font-size: var(--rp-type-base);
 			line-height: var(--rp-line-article-compact);
+		}
+
+		.rp-navigation-overlay {
+			padding-block: var(--rp-space-4);
+			padding-inline: var(--rp-space-2);
 		}
 	}
 
