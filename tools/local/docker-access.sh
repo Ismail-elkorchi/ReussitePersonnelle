@@ -37,6 +37,10 @@ rp_reexec_with_docker_group_if_needed() {
 		command_line+=" $quoted_arg"
 	done
 
+	if ! sg docker -c 'docker info >/dev/null 2>&1' >/dev/null 2>&1; then
+		return
+	fi
+
 	export RP_DOCKER_GROUP_SESSION=1
 	exec sg docker -c "$command_line"
 }
