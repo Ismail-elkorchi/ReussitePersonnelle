@@ -281,26 +281,35 @@ Text Domain: reussitepersonnelle
 		position: relative;
 		z-index: var(--rp-layer-header);
 		border-bottom: var(--rp-border-hairline) solid var(--rp-color-border-subtle);
-		background: var(--rp-color-surface-base);
+		background: color-mix(in srgb, var(--rp-color-surface-base) 92%, rgb(255 255 255));
+		backdrop-filter: blur(18px) saturate(1.2);
 	}
 
-	.rp-header-inner {
+	.rp-header .rp-header-inner {
 		position: relative;
-		display: flex;
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
 		align-items: center;
-		justify-content: space-between;
 		min-height: calc(var(--rp-size-target) + var(--rp-space-3));
-		gap: var(--rp-space-2);
+		gap: var(--rp-space-3);
 	}
 
 	.rp-header .wp-block-site-title {
-		flex: 1 1 auto;
+		grid-column: 1;
+		grid-row: 1;
+		justify-self: start;
 		min-width: var(--rp-size-site-title-min);
 		margin: 0;
 		font-family: var(--rp-font-serif);
 		font-size: var(--rp-type-lead);
 		font-weight: var(--rp-weight-bold);
 		line-height: var(--rp-line-tight);
+	}
+
+	.rp-header .wp-block-site-title :where(a) {
+		display: inline-flex;
+		align-items: center;
+		min-height: var(--rp-size-target);
 	}
 
 	:is(
@@ -332,16 +341,21 @@ Text Domain: reussitepersonnelle
 		color: var(--rp-color-accent-primary);
 	}
 
-	.rp-header-actions {
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-		gap: var(--rp-space-1);
-		margin-inline-start: auto;
+	.rp-header .rp-header-actions {
+		display: contents;
+	}
+
+	.rp-header .rp-primary-nav {
+		grid-column: 2;
+		grid-row: 1;
+		justify-self: center;
 	}
 
 	.rp-search-disclosure {
 		position: relative;
+		grid-column: 3;
+		grid-row: 1;
+		justify-self: end;
 		margin: 0;
 	}
 
@@ -350,71 +364,121 @@ Text Domain: reussitepersonnelle
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: var(--rp-size-target);
+		gap: 0.45rem;
+		width: auto;
+		min-width: var(--rp-size-target);
 		height: var(--rp-size-target);
-		border: var(--rp-border-hairline) solid var(--rp-color-border-subtle);
+		padding: 0 0.9rem;
+		border: var(--rp-border-hairline) solid color-mix(in srgb, var(--rp-color-border-subtle) 72%, transparent);
 		border-radius: var(--rp-radius-pill);
-		background: var(--rp-color-surface-base);
+		background: color-mix(in srgb, var(--rp-color-surface-base) 78%, rgb(255 255 255));
+		box-shadow:
+			inset 0 0 0 1px color-mix(in srgb, rgb(255 255 255) 64%, transparent),
+			0 1px 2px var(--wp--custom--rp--color--shadow-hairline);
 		color: var(--rp-color-text-primary);
 		cursor: pointer;
 		list-style: none;
 		transition:
 			background-color var(--rp-duration-fast) var(--rp-ease-standard),
 			border-color var(--rp-duration-fast) var(--rp-ease-standard),
-			color var(--rp-duration-fast) var(--rp-ease-standard);
+			box-shadow var(--rp-duration-fast) var(--rp-ease-standard),
+			color var(--rp-duration-fast) var(--rp-ease-standard),
+			transform var(--rp-duration-fast) var(--rp-ease-standard);
 	}
 
 	.rp-search-disclosure summary::-webkit-details-marker {
 		display: none;
 	}
 
-	.rp-search-disclosure summary::before,
-	.rp-search-disclosure summary::after {
+	.rp-search-summary-icon,
+	.rp-header-search-icon {
+		position: relative;
+		display: block;
+		width: 1.15rem;
+		height: 1.15rem;
+		flex: 0 0 auto;
+	}
+
+	.rp-search-summary-icon::before,
+	.rp-search-summary-icon::after,
+	.rp-header-search-icon::before,
+	.rp-header-search-icon::after {
 		position: absolute;
-		inset-block-start: 50%;
-		inset-inline-start: 50%;
 		display: block;
 		content: "";
 	}
 
-	.rp-search-disclosure summary::before {
-		width: var(--rp-size-search-ring);
-		height: var(--rp-size-search-ring);
+	.rp-search-summary-icon::before,
+	.rp-header-search-icon::before {
+		inset: 0.05rem 0.18rem 0.18rem 0.05rem;
 		border: calc(var(--rp-border-hairline) * 2) solid currentcolor;
 		border-radius: var(--rp-radius-pill);
-		transform: translate(-50%, -50%);
 	}
 
-	.rp-search-disclosure summary::after {
-		width: var(--rp-size-search-handle);
+	.rp-search-summary-icon::after,
+	.rp-header-search-icon::after {
+		inset-block-start: 0.78rem;
+		inset-inline-start: 0.77rem;
+		width: 0.46rem;
 		height: calc(var(--rp-border-hairline) * 2);
 		border-radius: var(--rp-radius-pill);
 		background: currentcolor;
-		transform: translate(0.35rem, 0.35rem) rotate(45deg);
+		transform: rotate(45deg);
 		transform-origin: left center;
+	}
+
+	.rp-header-search-icon {
+		width: 1rem;
+		height: 1rem;
+		margin-inline-start: 0.65rem;
+		color: var(--rp-color-text-muted);
+	}
+
+	.rp-header-search-icon::before {
+		inset: 0.04rem 0.16rem 0.16rem 0.04rem;
+	}
+
+	.rp-header-search-icon::after {
+		inset-block-start: 0.68rem;
+		inset-inline-start: 0.67rem;
+		width: 0.4rem;
+	}
+
+	.rp-search-summary-label {
+		color: var(--rp-color-text-muted);
+		font-size: var(--rp-type-sm);
+		font-weight: var(--rp-weight-bold);
+		line-height: 1;
 	}
 
 	.rp-search-disclosure[open] summary,
 	.rp-search-disclosure summary:hover {
-		border-color: var(--rp-color-accent-primary);
-		background: var(--rp-color-surface-muted);
+		border-color: color-mix(in srgb, var(--rp-color-accent-primary) 38%, var(--rp-color-border-subtle));
+		background: var(--rp-color-surface-raised);
+		box-shadow:
+			inset 0 0 0 1px color-mix(in srgb, rgb(255 255 255) 76%, transparent),
+			0 0.35rem 1rem var(--wp--custom--rp--color--shadow-soft);
 		color: var(--rp-color-accent-primary);
+	}
+
+	.rp-search-disclosure summary:active {
+		transform: scale(0.98);
 	}
 
 	.rp-search-panel {
 		position: absolute;
-		inset-block-start: calc(100% + var(--rp-space-1));
+		inset-block-start: calc(100% + 0.45rem);
 		inset-inline-end: 0;
 		z-index: var(--rp-layer-popover);
-		width: min(var(--rp-measure-popover), calc(100vw - var(--rp-space-4)));
-		padding: var(--rp-space-2);
-		border: var(--rp-border-hairline) solid var(--rp-color-border-subtle);
+		width: min(28rem, calc(100vw - var(--rp-space-4)));
+		padding: 0.4rem;
+		border: var(--rp-border-hairline) solid color-mix(in srgb, var(--rp-color-border-subtle) 76%, transparent);
 		border-radius: var(--rp-radius-base);
-		background: var(--rp-color-surface-base);
+		background: color-mix(in srgb, var(--rp-color-surface-base) 88%, rgb(255 255 255));
+		backdrop-filter: blur(18px) saturate(1.2);
 		box-shadow: var(--rp-shadow-elevated);
 	}
 
-	.rp-header-search,
 	.rp-search-form [class~="wp-block-search__inside-wrapper"] {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) auto;
@@ -422,11 +486,31 @@ Text Domain: reussitepersonnelle
 	}
 
 	.rp-header-search {
+		position: relative;
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr) auto;
+		align-items: center;
+		min-height: var(--rp-size-target);
+		gap: 0.35rem;
 		margin: 0;
+		padding: 0.25rem;
+		border: var(--rp-border-hairline) solid var(--rp-color-border-subtle);
+		border-radius: var(--rp-radius-pill);
+		background: var(--rp-color-surface-raised);
+		box-shadow: inset 0 0 0 1px color-mix(in srgb, rgb(255 255 255) 72%, transparent);
+		transition:
+			border-color var(--rp-duration-fast) var(--rp-ease-standard),
+			box-shadow var(--rp-duration-fast) var(--rp-ease-standard);
+	}
+
+	.rp-header-search:focus-within {
+		border-color: color-mix(in srgb, var(--rp-color-accent-focus) 56%, var(--rp-color-border-subtle));
+		box-shadow:
+			inset 0 0 0 1px color-mix(in srgb, rgb(255 255 255) 80%, transparent),
+			0 0 0 var(--rp-size-focus-offset) color-mix(in srgb, var(--rp-color-accent-focus) 22%, transparent);
 	}
 
 	[class~="wp-block-search__input"],
-	.rp-header-search input,
 	.rp-search-form input,
 	.rp-search-form [class~="wp-block-search__input"] {
 		width: 100%;
@@ -440,8 +524,24 @@ Text Domain: reussitepersonnelle
 		font-size: var(--rp-type-sm);
 	}
 
+	.rp-header-search input {
+		width: 100%;
+		min-height: calc(var(--rp-size-target) - 0.5rem);
+		padding: 0.35rem 0.15rem;
+		border: 0;
+		background: transparent;
+		color: var(--rp-color-text-primary);
+		font: inherit;
+		font-size: var(--rp-type-sm);
+		outline: 0;
+	}
+
+	.rp-header-search input::placeholder {
+		color: color-mix(in srgb, var(--rp-color-text-muted) 78%, transparent);
+		opacity: 1;
+	}
+
 	[class~="wp-block-search__button"],
-	.rp-header-search button,
 	.rp-search-form [class~="wp-block-search__button"] {
 		display: inline-flex;
 		align-items: center;
@@ -458,70 +558,201 @@ Text Domain: reussitepersonnelle
 		cursor: pointer;
 	}
 
+	.rp-header-search button {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: calc(var(--rp-size-target) - 0.5rem);
+		min-width: calc(var(--rp-size-target) - 0.5rem);
+		height: calc(var(--rp-size-target) - 0.5rem);
+		min-height: calc(var(--rp-size-target) - 0.5rem);
+		padding: 0;
+		border: 0;
+		border-radius: var(--rp-radius-pill);
+		background: var(--rp-color-text-primary);
+		color: var(--rp-color-text-inverse);
+		cursor: pointer;
+		transition:
+			background-color var(--rp-duration-fast) var(--rp-ease-standard),
+			transform var(--rp-duration-fast) var(--rp-ease-standard);
+	}
+
+	.rp-header-search button::before,
+	.rp-header-search button::after {
+		position: absolute;
+		display: block;
+		content: "";
+	}
+
+	.rp-header-search button::before {
+		width: 0.78rem;
+		height: calc(var(--rp-border-hairline) * 2);
+		border-radius: var(--rp-radius-pill);
+		background: currentcolor;
+	}
+
+	.rp-header-search button::after {
+		width: 0.48rem;
+		height: 0.48rem;
+		border-block-start: calc(var(--rp-border-hairline) * 2) solid currentcolor;
+		border-inline-end: calc(var(--rp-border-hairline) * 2) solid currentcolor;
+		transform: translateX(0.25rem) rotate(45deg);
+	}
+
 	[class~="wp-block-search__button"]:hover,
-	.rp-header-search button:hover,
 	.rp-search-form [class~="wp-block-search__button"]:hover {
 		border-color: var(--rp-color-accent-primary);
 		background: var(--rp-color-accent-primary);
+	}
+
+	.rp-header-search button:hover {
+		background: var(--rp-color-accent-primary);
+	}
+
+	.rp-header-search button:active {
+		transform: scale(0.96);
 	}
 
 	.rp-header .wp-block-navigation {
 		margin: 0;
 	}
 
+	.rp-header [class~="wp-block-navigation__responsive-container-open"] {
+		align-items: center;
+		justify-content: center;
+		width: var(--rp-size-target);
+		height: var(--rp-size-target);
+		border: var(--rp-border-hairline) solid color-mix(in srgb, var(--rp-color-border-subtle) 72%, transparent);
+		border-radius: var(--rp-radius-pill);
+		background: color-mix(in srgb, var(--rp-color-surface-base) 78%, rgb(255 255 255));
+		box-shadow:
+			inset 0 0 0 1px color-mix(in srgb, rgb(255 255 255) 64%, transparent),
+			0 1px 2px var(--wp--custom--rp--color--shadow-hairline);
+		color: var(--rp-color-text-primary);
+		transition:
+			background-color var(--rp-duration-fast) var(--rp-ease-standard),
+			border-color var(--rp-duration-fast) var(--rp-ease-standard),
+			box-shadow var(--rp-duration-fast) var(--rp-ease-standard),
+			color var(--rp-duration-fast) var(--rp-ease-standard),
+			transform var(--rp-duration-fast) var(--rp-ease-standard);
+	}
+
+	.rp-header [class~="wp-block-navigation__responsive-container-open"]:hover {
+		border-color: color-mix(in srgb, var(--rp-color-accent-primary) 38%, var(--rp-color-border-subtle));
+		background: var(--rp-color-surface-raised);
+		box-shadow:
+			inset 0 0 0 1px color-mix(in srgb, rgb(255 255 255) 76%, transparent),
+			0 0.35rem 1rem var(--wp--custom--rp--color--shadow-soft);
+		color: var(--rp-color-accent-primary);
+	}
+
+	.rp-header [class~="wp-block-navigation__responsive-container-open"]:active {
+		transform: scale(0.98);
+	}
+
+	.rp-header [class~="wp-block-navigation__responsive-container-open"] svg {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
 	.rp-header [class~="wp-block-navigation__responsive-container"].is-menu-open {
+		inset: 0;
+		align-items: stretch;
+		width: 100vw;
+		height: 100vh;
+		height: 100dvh;
+		max-height: 100dvh;
+		overflow-y: auto;
 		background: var(--rp-color-surface-base);
 		color: var(--rp-color-text-primary);
+		animation: none;
+		opacity: 1;
+		transform: none;
+		transition: none;
 	}
 
 	.rp-header [class~="wp-block-navigation__responsive-container"].is-menu-open [class~="wp-block-navigation__responsive-container-content"] {
+		display: block;
 		width: 100%;
+		min-height: 100%;
 		padding: 0;
 	}
 
 	.rp-navigation-overlay {
-		display: grid;
-		align-content: start;
-		min-height: 100svh;
-		padding-block: var(--rp-space-5);
-		padding-inline: var(--rp-space-3);
+		position: relative;
+		display: block;
+		min-height: 100%;
+		padding: 0;
 		background:
-			linear-gradient(180deg, var(--rp-color-surface-base) 0%, var(--rp-color-surface-muted) 100%);
+			linear-gradient(
+				180deg,
+				color-mix(in srgb, var(--rp-color-surface-base) 94%, rgb(255 255 255)) 0%,
+				var(--rp-color-surface-muted) 100%
+			);
 		color: var(--rp-color-text-primary);
 	}
 
-	.rp-navigation-overlay > * {
-		width: min(100%, var(--rp-measure-nav-overlay));
+	.rp-navigation-overlay-main {
+		width: min(100%, calc(var(--rp-measure-nav-overlay) + 4rem));
 		margin-inline: auto;
+		padding-block: var(--rp-space-3) calc(var(--rp-space-5) + env(safe-area-inset-bottom));
+		padding-inline: var(--rp-space-2);
+	}
+
+	.rp-navigation-overlay-main > :where(*) {
+		margin-inline: 0 !important;
 	}
 
 	.rp-navigation-overlay-bar {
+		position: sticky;
+		inset-block-start: 0;
+		z-index: 1;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		gap: var(--rp-space-2);
-		padding-block-end: var(--rp-space-2);
+		width: 100%;
+		padding-block: max(calc(var(--rp-space-3) / 2), env(safe-area-inset-top)) calc(var(--rp-space-3) / 2);
+		padding-inline: var(--rp-space-2);
 		border-block-end: var(--rp-border-hairline) solid var(--rp-color-border-subtle);
+		background: color-mix(in srgb, var(--rp-color-surface-base) 92%, rgb(255 255 255));
+		backdrop-filter: blur(18px) saturate(1.2);
 	}
 
-	.rp-navigation-overlay-title {
-		margin-block: var(--rp-space-4) 0;
+	.rp-navigation-overlay .rp-navigation-overlay-brand {
+		margin: 0;
 		font-family: var(--rp-font-serif);
-		font-size: var(--rp-type-heading-small);
-		line-height: var(--rp-line-heading);
+		font-size: var(--rp-type-lead);
+		font-weight: var(--rp-weight-bold);
+		line-height: var(--rp-line-tight);
 	}
 
-	.rp-navigation-overlay-title :where(a) {
+	.rp-navigation-overlay .rp-navigation-overlay-brand :where(a) {
+		display: inline-flex;
+		align-items: center;
+		min-height: var(--rp-size-target);
 		color: inherit;
+		font: inherit;
 		text-decoration: none;
 	}
 
-	.rp-navigation-overlay-intro {
-		max-width: var(--rp-measure-readable);
-		margin-block: var(--rp-space-2) var(--rp-space-4);
-		color: var(--rp-color-text-muted);
-		font-size: var(--rp-type-base);
-		line-height: var(--rp-line-lead);
+	.rp-navigation-overlay-title {
+		max-width: 18rem;
+		margin-block: 0;
+		font-family: var(--rp-font-serif);
+		font-size: var(--rp-type-heading-small);
+		line-height: var(--rp-line-heading);
+		text-wrap: balance;
+	}
+
+	.rp-navigation-overlay-section {
+		margin-block: var(--rp-space-3) var(--rp-space-1);
+		color: var(--rp-color-accent-secondary);
+		font-size: var(--rp-type-xs);
+		font-weight: var(--rp-weight-heavy);
+		letter-spacing: 0;
+		text-transform: uppercase;
 	}
 
 	.rp-navigation-overlay-close {
@@ -534,28 +765,44 @@ Text Domain: reussitepersonnelle
 		justify-content: center;
 		min-width: var(--rp-size-target);
 		min-height: var(--rp-size-target);
-		border: var(--rp-border-hairline) solid var(--rp-color-border-subtle);
+		border: var(--rp-border-hairline) solid color-mix(in srgb, var(--rp-color-border-subtle) 72%, transparent);
 		border-radius: var(--rp-radius-pill);
-		background: var(--rp-color-surface-base);
+		background: color-mix(in srgb, var(--rp-color-surface-base) 78%, rgb(255 255 255));
+		box-shadow:
+			inset 0 0 0 1px color-mix(in srgb, rgb(255 255 255) 64%, transparent),
+			0 1px 2px var(--wp--custom--rp--color--shadow-hairline);
 		color: var(--rp-color-text-primary);
 		cursor: pointer;
+		transition:
+			background-color var(--rp-duration-fast) var(--rp-ease-standard),
+			border-color var(--rp-duration-fast) var(--rp-ease-standard),
+			box-shadow var(--rp-duration-fast) var(--rp-ease-standard),
+			color var(--rp-duration-fast) var(--rp-ease-standard),
+			transform var(--rp-duration-fast) var(--rp-ease-standard);
 	}
 
 	.rp-navigation-overlay-close :where(button:hover) {
-		border-color: var(--rp-color-accent-primary);
-		background: var(--rp-color-surface-muted);
+		border-color: color-mix(in srgb, var(--rp-color-accent-primary) 38%, var(--rp-color-border-subtle));
+		background: var(--rp-color-surface-raised);
+		box-shadow:
+			inset 0 0 0 1px color-mix(in srgb, rgb(255 255 255) 76%, transparent),
+			0 0.35rem 1rem var(--wp--custom--rp--color--shadow-soft);
 		color: var(--rp-color-accent-primary);
+	}
+
+	.rp-navigation-overlay-close :where(button:active) {
+		transform: scale(0.98);
 	}
 
 	.rp-overlay-nav {
 		width: 100%;
-		margin-block: var(--rp-space-4) 0;
+		margin-block: 0;
 	}
 
 	.rp-overlay-nav [class~="wp-block-navigation__container"] {
 		align-items: stretch;
 		width: 100%;
-		gap: 0;
+		gap: calc(var(--rp-space-1) / 2);
 	}
 
 	.rp-overlay-nav .wp-block-navigation-item {
@@ -563,24 +810,43 @@ Text Domain: reussitepersonnelle
 	}
 
 	.rp-overlay-nav :where(a) {
+		position: relative;
 		justify-content: flex-start;
 		width: 100%;
-		padding: 0.95rem 0;
-		border-block-end: var(--rp-border-hairline) solid var(--rp-color-border-subtle);
+		min-height: var(--rp-size-target);
+		padding: 0.75rem 2.25rem 0.75rem 0.9rem;
+		border: var(--rp-border-hairline) solid var(--rp-color-border-subtle);
+		border-radius: var(--rp-radius-base);
+		background: color-mix(in srgb, var(--rp-color-surface-base) 82%, rgb(255 255 255));
 		color: var(--rp-color-text-primary);
-		font-family: var(--rp-font-serif);
-		font-size: var(--rp-type-card-title);
+		font-size: var(--rp-type-sm);
 		font-weight: var(--rp-weight-bold);
-		line-height: var(--rp-line-card);
+		line-height: var(--rp-line-compact);
 		text-decoration: none;
 	}
 
-	.rp-overlay-nav :where(a:hover) {
+	.rp-overlay-nav :where(a)::after {
+		position: absolute;
+		inset-block-start: 50%;
+		inset-inline-end: 1rem;
+		width: 0.46rem;
+		height: 0.46rem;
+		border-block-start: calc(var(--rp-border-hairline) * 2) solid currentcolor;
+		border-inline-end: calc(var(--rp-border-hairline) * 2) solid currentcolor;
+		content: "";
+		transform: translateY(-50%) rotate(45deg);
+	}
+
+	.rp-overlay-nav :where(a:hover),
+	.rp-overlay-nav :where(a:focus-visible) {
+		border-color: color-mix(in srgb, var(--rp-color-accent-primary) 44%, var(--rp-color-border-subtle));
+		background: var(--rp-color-surface-raised);
 		color: var(--rp-color-accent-primary);
 	}
 
 	.rp-overlay-search {
-		margin-block-start: var(--rp-space-4);
+		max-width: none;
+		margin-block: var(--rp-space-3);
 	}
 
 	.rp-footer {
@@ -848,19 +1114,121 @@ Text Domain: reussitepersonnelle
 		border-color: var(--rp-color-accent-primary);
 	}
 
-	.rp-navigation-overlay .rp-topic-links {
-		display: grid;
-		gap: calc(var(--rp-space-1) / 2);
-		margin-block-start: var(--rp-space-4);
+	.rp-header .wp-block-navigation .rp-navigation-overlay-brand a {
+		padding: 0;
+		font-family: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+		line-height: inherit;
 	}
 
-	.rp-navigation-overlay .rp-topic-links a {
-		display: flex;
-		width: 100%;
-		padding: 0.75rem 0.9rem;
-		border-radius: var(--rp-radius-base);
-		background: var(--rp-color-surface-translucent);
-		line-height: var(--rp-line-compact);
+	.rp-navigation-overlay .rp-overlay-search [class~="wp-block-search__inside-wrapper"] {
+		position: relative;
+		align-items: center;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 0.35rem;
+		padding: 0.25rem;
+		border: var(--rp-border-hairline) solid color-mix(in srgb, var(--rp-color-border-subtle) 76%, transparent);
+		border-radius: var(--rp-radius-pill);
+		background: var(--rp-color-surface-raised);
+		box-shadow:
+			inset 0 0 0 1px color-mix(in srgb, rgb(255 255 255) 72%, transparent),
+			0 0.35rem 1.25rem var(--wp--custom--rp--color--shadow-hairline);
+		transition:
+			border-color var(--rp-duration-fast) var(--rp-ease-standard),
+			box-shadow var(--rp-duration-fast) var(--rp-ease-standard);
+	}
+
+	.rp-navigation-overlay .rp-overlay-search [class~="wp-block-search__inside-wrapper"]:focus-within {
+		border-color: color-mix(in srgb, var(--rp-color-accent-focus) 56%, var(--rp-color-border-subtle));
+		box-shadow:
+			inset 0 0 0 1px color-mix(in srgb, rgb(255 255 255) 80%, transparent),
+			0 0 0 var(--rp-size-focus-offset) color-mix(in srgb, var(--rp-color-accent-focus) 22%, transparent);
+	}
+
+	.rp-navigation-overlay .rp-overlay-search [class~="wp-block-search__inside-wrapper"]::before,
+	.rp-navigation-overlay .rp-overlay-search [class~="wp-block-search__inside-wrapper"]::after {
+		position: absolute;
+		display: block;
+		content: "";
+		pointer-events: none;
+	}
+
+	.rp-navigation-overlay .rp-overlay-search [class~="wp-block-search__inside-wrapper"]::before {
+		inset-block-start: 50%;
+		inset-inline-start: 1.1rem;
+		width: 0.72rem;
+		height: 0.72rem;
+		border: calc(var(--rp-border-hairline) * 2) solid var(--rp-color-text-muted);
+		border-radius: var(--rp-radius-pill);
+		transform: translateY(-57%);
+	}
+
+	.rp-navigation-overlay .rp-overlay-search [class~="wp-block-search__inside-wrapper"]::after {
+		inset-block-start: 50%;
+		inset-inline-start: 1.72rem;
+		width: 0.38rem;
+		height: calc(var(--rp-border-hairline) * 2);
+		border-radius: var(--rp-radius-pill);
+		background: var(--rp-color-text-muted);
+		transform: translateY(0.25rem) rotate(45deg);
+		transform-origin: left center;
+	}
+
+	.rp-navigation-overlay .rp-overlay-search [class~="wp-block-search__input"] {
+		min-width: 0;
+		min-height: calc(var(--rp-size-target) - 0.5rem);
+		padding: 0.35rem 0.15rem 0.35rem 2.25rem;
+		border: 0;
+		background: transparent;
+		outline: 0;
+	}
+
+	.rp-navigation-overlay .rp-overlay-search [class~="wp-block-search__button"] {
+		position: relative;
+		width: calc(var(--rp-size-target) - 0.5rem);
+		min-width: calc(var(--rp-size-target) - 0.5rem);
+		height: calc(var(--rp-size-target) - 0.5rem);
+		min-height: calc(var(--rp-size-target) - 0.5rem);
+		padding: 0;
+		border: 0;
+		border-radius: var(--rp-radius-pill);
+		background: var(--rp-color-text-primary);
+		color: var(--rp-color-text-inverse);
+		font-size: 0;
+		transition:
+			background-color var(--rp-duration-fast) var(--rp-ease-standard),
+			transform var(--rp-duration-fast) var(--rp-ease-standard);
+	}
+
+	.rp-navigation-overlay .rp-overlay-search [class~="wp-block-search__button"]::before,
+	.rp-navigation-overlay .rp-overlay-search [class~="wp-block-search__button"]::after {
+		position: absolute;
+		display: block;
+		content: "";
+	}
+
+	.rp-navigation-overlay .rp-overlay-search [class~="wp-block-search__button"]::before {
+		width: 0.78rem;
+		height: calc(var(--rp-border-hairline) * 2);
+		border-radius: var(--rp-radius-pill);
+		background: currentcolor;
+	}
+
+	.rp-navigation-overlay .rp-overlay-search [class~="wp-block-search__button"]::after {
+		width: 0.48rem;
+		height: 0.48rem;
+		border-block-start: calc(var(--rp-border-hairline) * 2) solid currentcolor;
+		border-inline-end: calc(var(--rp-border-hairline) * 2) solid currentcolor;
+		transform: translateX(0.25rem) rotate(45deg);
+	}
+
+	.rp-navigation-overlay .rp-overlay-search [class~="wp-block-search__button"]:hover {
+		background: var(--rp-color-accent-primary);
+	}
+
+	.rp-navigation-overlay .rp-overlay-search [class~="wp-block-search__button"]:active {
+		transform: scale(0.96);
 	}
 
 /* Templates */
@@ -1123,17 +1491,26 @@ Text Domain: reussitepersonnelle
 			padding-block: calc(var(--rp-space-1) / 2);
 		}
 
-		.rp-header-inner {
+		.rp-header .rp-header-inner {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
 			min-height: calc(var(--rp-size-target) + var(--rp-space-2));
 			flex-wrap: nowrap;
 		}
 
 		.rp-header .wp-block-site-title {
+			flex: 1 1 auto;
 			min-width: 0;
 		}
 
-		.rp-header-actions {
+		.rp-header .rp-header-actions {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			gap: calc(var(--rp-space-1) / 2);
 			flex: 0 0 auto;
+			margin-inline-start: auto;
 		}
 
 		.rp-search-panel {
@@ -1141,6 +1518,7 @@ Text Domain: reussitepersonnelle
 			inset-block-start: calc(var(--rp-size-target) + var(--rp-space-3));
 			inset-inline: var(--rp-space-2);
 			width: auto;
+			padding: 0.35rem;
 		}
 
 		.rp-section,
@@ -1171,9 +1549,41 @@ Text Domain: reussitepersonnelle
 			padding: var(--rp-space-3);
 		}
 
-		.rp-header-search,
 		.rp-search-form [class~="wp-block-search__inside-wrapper"] {
 			grid-template-columns: 1fr;
+		}
+
+		.rp-navigation-overlay .rp-overlay-search [class~="wp-block-search__inside-wrapper"] {
+			grid-template-columns: minmax(0, 1fr) auto;
+		}
+
+		.rp-search-disclosure summary {
+			width: var(--rp-size-target);
+			padding-inline: 0;
+		}
+
+		.rp-search-summary-label {
+			display: none;
+		}
+
+		.rp-search-disclosure[open] .rp-search-summary-icon::before,
+		.rp-search-disclosure[open] .rp-search-summary-icon::after {
+			inset-block-start: 50%;
+			inset-inline-start: 50%;
+			width: 1rem;
+			height: calc(var(--rp-border-hairline) * 2);
+			border: 0;
+			border-radius: var(--rp-radius-pill);
+			background: currentcolor;
+			transform-origin: center;
+		}
+
+		.rp-search-disclosure[open] .rp-search-summary-icon::before {
+			transform: translate(-50%, -50%) rotate(45deg);
+		}
+
+		.rp-search-disclosure[open] .rp-search-summary-icon::after {
+			transform: translate(-50%, -50%) rotate(-45deg);
 		}
 
 		.wp-block-post-content {
@@ -1181,10 +1591,6 @@ Text Domain: reussitepersonnelle
 			line-height: var(--rp-line-article-compact);
 		}
 
-		.rp-navigation-overlay {
-			padding-block: var(--rp-space-4);
-			padding-inline: var(--rp-space-2);
-		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {

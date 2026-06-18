@@ -2,24 +2,34 @@
 <div class="wp-block-group rp-navigation-overlay">
 	<!-- wp:group {"className":"rp-navigation-overlay-bar","layout":{"type":"flex","justifyContent":"space-between","flexWrap":"nowrap"}} -->
 	<div class="wp-block-group rp-navigation-overlay-bar">
-		<!-- wp:paragraph {"className":"rp-section-label"} -->
-		<p class="rp-section-label">Menu</p>
-		<!-- /wp:paragraph -->
+		<!-- wp:site-title {"level":0,"className":"rp-navigation-overlay-brand"} /-->
 
 		<!-- wp:navigation-overlay-close {"className":"rp-navigation-overlay-close"} /-->
 	</div>
 	<!-- /wp:group -->
 
-	<!-- wp:site-title {"level":0,"className":"rp-navigation-overlay-title"} /-->
+	<!-- wp:group {"className":"rp-navigation-overlay-main","layout":{"type":"constrained"}} -->
+	<div class="wp-block-group rp-navigation-overlay-main">
+		<!-- wp:paragraph {"className":"rp-section-label"} -->
+		<p class="rp-section-label">Menu</p>
+		<!-- /wp:paragraph -->
 
-	<!-- wp:paragraph {"className":"rp-navigation-overlay-intro"} -->
-	<p class="rp-navigation-overlay-intro">Choisissez un point d’entrée, cherchez un sujet précis, puis revenez à une lecture calme.</p>
-	<!-- /wp:paragraph -->
+		<!-- wp:heading {"level":2,"className":"rp-navigation-overlay-title"} -->
+		<h2 class="wp-block-heading rp-navigation-overlay-title">Parcourir le site</h2>
+		<!-- /wp:heading -->
 
-	<!-- wp:navigation {"className":"rp-overlay-nav","overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"}} /-->
+		<!-- wp:paragraph {"className":"rp-navigation-overlay-section"} -->
+		<p class="rp-navigation-overlay-section">Liens</p>
+		<!-- /wp:paragraph -->
 
-	<!-- wp:search {"label":"Rechercher sur Réussite Personnelle","showLabel":false,"placeholder":"Rechercher un sujet","buttonText":"Rechercher","className":"rp-search-form rp-overlay-search"} /-->
+		<!-- wp:navigation {"className":"rp-overlay-nav","overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"}} /-->
 
-	<!-- wp:reussitepersonnelle/topic-links /-->
+		<!-- wp:paragraph {"className":"rp-navigation-overlay-section"} -->
+		<p class="rp-navigation-overlay-section">Recherche</p>
+		<!-- /wp:paragraph -->
+
+		<!-- wp:search {"label":"Rechercher sur Réussite Personnelle","showLabel":false,"placeholder":"Rechercher un sujet","buttonText":"Rechercher","className":"rp-search-form rp-overlay-search"} /-->
+	</div>
+	<!-- /wp:group -->
 </div>
 <!-- /wp:group -->

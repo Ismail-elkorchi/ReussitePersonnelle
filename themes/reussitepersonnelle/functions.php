@@ -43,24 +43,32 @@ add_action(
 				'blockTypes' => array( 'core/template-part/navigation-overlay' ),
 				'content'    => '<!-- wp:group {"className":"rp-navigation-overlay","layout":{"type":"constrained"}} -->
 <div class="wp-block-group rp-navigation-overlay"><!-- wp:group {"className":"rp-navigation-overlay-bar","layout":{"type":"flex","justifyContent":"space-between","flexWrap":"nowrap"}} -->
-<div class="wp-block-group rp-navigation-overlay-bar"><!-- wp:paragraph {"className":"rp-section-label"} -->
-<p class="rp-section-label">' . esc_html__( 'Menu', 'reussitepersonnelle' ) . '</p>
-<!-- /wp:paragraph -->
+<div class="wp-block-group rp-navigation-overlay-bar"><!-- wp:site-title {"level":0,"className":"rp-navigation-overlay-brand"} /-->
 
 <!-- wp:navigation-overlay-close {"className":"rp-navigation-overlay-close"} /--></div>
 <!-- /wp:group -->
 
-<!-- wp:site-title {"level":0,"className":"rp-navigation-overlay-title"} /-->
+<!-- wp:group {"className":"rp-navigation-overlay-main","layout":{"type":"constrained"}} -->
+<div class="wp-block-group rp-navigation-overlay-main"><!-- wp:paragraph {"className":"rp-section-label"} -->
+<p class="rp-section-label">' . esc_html__( 'Menu', 'reussitepersonnelle' ) . '</p>
+<!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"className":"rp-navigation-overlay-intro"} -->
-<p class="rp-navigation-overlay-intro">' . esc_html__( 'Choisissez un point d’entrée, cherchez un sujet précis, puis revenez à une lecture calme.', 'reussitepersonnelle' ) . '</p>
+<!-- wp:heading {"level":2,"className":"rp-navigation-overlay-title"} -->
+<h2 class="wp-block-heading rp-navigation-overlay-title">' . esc_html__( 'Parcourir le site', 'reussitepersonnelle' ) . '</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"rp-navigation-overlay-section"} -->
+<p class="rp-navigation-overlay-section">' . esc_html__( 'Liens', 'reussitepersonnelle' ) . '</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:navigation {"className":"rp-overlay-nav","overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"}} /-->
 
-<!-- wp:search {"label":"' . esc_attr__( 'Rechercher sur Réussite Personnelle', 'reussitepersonnelle' ) . '","showLabel":false,"placeholder":"' . esc_attr__( 'Rechercher un sujet', 'reussitepersonnelle' ) . '","buttonText":"' . esc_attr__( 'Rechercher', 'reussitepersonnelle' ) . '","className":"rp-search-form rp-overlay-search"} /-->
+<!-- wp:paragraph {"className":"rp-navigation-overlay-section"} -->
+<p class="rp-navigation-overlay-section">' . esc_html__( 'Recherche', 'reussitepersonnelle' ) . '</p>
+<!-- /wp:paragraph -->
 
-<!-- wp:reussitepersonnelle/topic-links /--></div>
+<!-- wp:search {"label":"' . esc_attr__( 'Rechercher sur Réussite Personnelle', 'reussitepersonnelle' ) . '","showLabel":false,"placeholder":"' . esc_attr__( 'Rechercher un sujet', 'reussitepersonnelle' ) . '","buttonText":"' . esc_attr__( 'Rechercher', 'reussitepersonnelle' ) . '","className":"rp-search-form rp-overlay-search"} /--></div>
+<!-- /wp:group --></div>
 <!-- /wp:group -->',
 			)
 		);
