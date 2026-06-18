@@ -1,7 +1,7 @@
 <!-- wp:group {"align":"full","className":"rp-header","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull rp-header">
-	<!-- wp:group {"className":"rp-header-inner","layout":{"type":"flex","justifyContent":"space-between","flexWrap":"nowrap"}} -->
-	<div class="wp-block-group rp-header-inner">
+	<!-- wp:group {"align":"wide","className":"rp-header-inner","layout":{"type":"flex","justifyContent":"space-between","flexWrap":"nowrap"}} -->
+	<div class="wp-block-group alignwide rp-header-inner">
 		<!-- wp:site-title {"level":0} /-->
 
 		<!-- wp:group {"className":"rp-header-actions","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"right"}} -->
@@ -9,13 +9,18 @@
 			<!-- wp:html -->
 			<details class="rp-search-disclosure">
 				<summary aria-label="Ouvrir la recherche">
+					<span class="rp-search-summary-icon" aria-hidden="true"></span>
+					<span class="rp-search-summary-label" aria-hidden="true">Rechercher</span>
 					<span class="screen-reader-text">Ouvrir la recherche</span>
 				</summary>
 				<div class="rp-search-panel">
 					<form class="rp-header-search" role="search" method="get" action="/">
 						<label class="screen-reader-text" for="rp-header-search-input">Rechercher sur Réussite Personnelle</label>
+						<span class="rp-header-search-icon" aria-hidden="true"></span>
 						<input id="rp-header-search-input" type="search" name="s" placeholder="Rechercher un sujet" required>
-						<button type="submit">Rechercher</button>
+						<button type="submit" aria-label="Rechercher">
+							<span class="screen-reader-text">Rechercher</span>
+						</button>
 					</form>
 				</div>
 			</details>
