@@ -4,6 +4,23 @@
 	"settings": {
 		"border": {
 			"color": true,
+			"radiusSizes": [
+				{
+					"slug": "none",
+					"size": "0",
+					"name": "None"
+				},
+				{
+					"slug": "base",
+					"size": "var(--wp--custom--rp--radius--base)",
+					"name": "Base"
+				},
+				{
+					"slug": "pill",
+					"size": "var(--wp--custom--rp--radius--pill)",
+					"name": "Pill"
+				}
+			],
 			"radius": true,
 			"style": true,
 			"width": true
@@ -190,6 +207,30 @@
 			"wideSize": "var(--wp--custom--rp--measure--wide)"
 		},
 		"dimensions": {
+			"aspectRatio": true,
+			"defaultAspectRatios": false,
+			"aspectRatios": [
+				{
+					"slug": "square",
+					"ratio": "1",
+					"name": "Square"
+				},
+				{
+					"slug": "editorial-portrait",
+					"ratio": "4/5",
+					"name": "Editorial Portrait"
+				},
+				{
+					"slug": "editorial-landscape",
+					"ratio": "16/10",
+					"name": "Editorial Landscape"
+				},
+				{
+					"slug": "wide",
+					"ratio": "16/9",
+					"name": "Wide"
+				}
+			],
 			"minHeight": true,
 			"width": true,
 			"height": true,
@@ -234,37 +275,37 @@
 				{
 					"slug": "20",
 					"size": "var(--wp--custom--rp--space--1)",
-					"name": "2"
+					"name": "Extra Small"
 				},
 				{
 					"slug": "30",
 					"size": "var(--wp--custom--rp--space--2)",
-					"name": "3"
+					"name": "Small"
 				},
 				{
 					"slug": "40",
 					"size": "var(--wp--custom--rp--space--3)",
-					"name": "4"
+					"name": "Base"
 				},
 				{
 					"slug": "50",
 					"size": "var(--wp--custom--rp--space--4)",
-					"name": "5"
+					"name": "Medium"
 				},
 				{
 					"slug": "60",
 					"size": "var(--wp--custom--rp--space--5)",
-					"name": "6"
+					"name": "Large"
 				},
 				{
 					"slug": "70",
 					"size": "var(--wp--custom--rp--space--6)",
-					"name": "7"
+					"name": "Extra Large"
 				},
 				{
 					"slug": "80",
 					"size": "var(--wp--custom--rp--space--7)",
-					"name": "8"
+					"name": "Section"
 				}
 			],
 			"units": [
@@ -278,7 +319,24 @@
 		},
 		"useRootPaddingAwareAlignments": true,
 		"shadow": {
-			"defaultPresets": false
+			"defaultPresets": false,
+			"presets": [
+				{
+					"slug": "card",
+					"shadow": "var(--wp--custom--rp--shadow--card)",
+					"name": "Card"
+				},
+				{
+					"slug": "soft",
+					"shadow": "var(--wp--custom--rp--shadow--soft)",
+					"name": "Soft"
+				},
+				{
+					"slug": "elevated",
+					"shadow": "var(--wp--custom--rp--shadow--elevated)",
+					"name": "Elevated"
+				}
+			]
 		},
 		"typography": {
 			"customFontSize": false,
@@ -306,22 +364,22 @@
 				{
 					"slug": "medium",
 					"size": "var(--wp--custom--rp--type--base)",
-					"name": "Medium"
+					"name": "Text"
 				},
 				{
 					"slug": "large",
 					"size": "var(--wp--custom--rp--type--card-title)",
-					"name": "Large"
+					"name": "Card Title"
 				},
 				{
 					"slug": "x-large",
 					"size": "var(--wp--custom--rp--type--heading)",
-					"name": "Extra Large"
+					"name": "Title"
 				},
 				{
 					"slug": "xx-large",
 					"size": "var(--wp--custom--rp--type--display)",
-					"name": "2X Large"
+					"name": "Display"
 				}
 			]
 		}
