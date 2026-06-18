@@ -15,7 +15,7 @@ services:
       - db-data:/var/lib/mysql
 
   wordpress:
-    image: wordpress:${WORDPRESS_VERSION:-6.9.4}-php${PHP_VERSION:-8.4}-apache
+    image: wordpress:${WORDPRESS_VERSION:-7.0}-php${PHP_VERSION:-8.4}-apache
     depends_on:
       db:
         condition: service_healthy

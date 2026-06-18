@@ -1,6 +1,6 @@
 # Local Development
 
-This repository uses Docker Compose for the local production clone. The goal is to mirror the important production versions: WordPress 6.9.4, PHP 8.4, and MariaDB 10.11.
+This repository uses Docker Compose for the local production clone. The goal is to mirror the important production versions: WordPress 7.0, PHP 8.4, and MariaDB 10.11.
 
 ## System Dependencies
 
@@ -82,6 +82,10 @@ The repository-owned theme and plugin are mounted over the production copy:
 themes/reussitepersonnelle/
 plugins/reussitepersonnelle-core/
 ```
+
+## WordPress Core Version
+
+The local stack keeps WordPress core files in the `wp-core` Docker volume. When `WORDPRESS_VERSION` changes, the local scripts check the running core version and reset only that core volume if it is stale. The local database, uploads, production plugin copies, and repository-owned theme/plugin mounts are preserved.
 
 ## Tests
 

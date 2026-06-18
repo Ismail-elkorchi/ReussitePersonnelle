@@ -21,13 +21,22 @@ function register_related_posts_block(): void {
 		'reussitepersonnelle/related-posts',
 		array(
 			'api_version'     => 3,
+			'title'           => __( 'Related posts', 'reussitepersonnelle-core' ),
+			'description'     => __( 'Displays related articles for the current post.', 'reussitepersonnelle-core' ),
+			'category'        => 'theme',
+			'icon'            => 'admin-links',
 			'attributes'      => array(
 				'postsPerPage' => array(
+					'label'   => __( 'Number of posts', 'reussitepersonnelle-core' ),
 					'type'    => 'number',
 					'default' => 3,
 				),
 			),
 			'render_callback' => __NAMESPACE__ . '\\render_related_posts_block',
+			'supports'        => array(
+				'autoRegister' => true,
+				'html'         => false,
+			),
 		)
 	);
 }
